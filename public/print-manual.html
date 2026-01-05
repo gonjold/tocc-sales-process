@@ -1,0 +1,2501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Training Manual | Al Hendrickson Toyota Coconut Creek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* === RESET & BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    /* === PAGE SETUP === */
+    @page { 
+      size: 8.5in 11in; 
+      margin: 0.75in 0.75in 0.75in 0.875in;
+    }
+    
+    html { 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 10pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    
+    body {
+      background: #e5e5e5;
+    }
+    
+    /* === COLORS === */
+    :root {
+      --toyota-red: #EB0A1E;
+      --coral: #F26B4E;
+      --sunset: #F5A623;
+      --ocean: #0891B2;
+      --teal: #0D9488;
+      --navy: #03215C;
+      --success: #16A34A;
+      --warning: #CA8A04;
+    }
+    
+    /* === PRINT BUTTON === */
+    .print-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+    .print-btn button {
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .print-btn .primary {
+      background: var(--toyota-red);
+      color: white;
+    }
+    .print-btn .secondary {
+      background: #333;
+      color: white;
+    }
+    
+    @media print {
+      .print-btn { display: none !important; }
+      body { background: white; }
+      .page { box-shadow: none; margin: 0; }
+    }
+    
+    /* === PAGE CONTAINER === */
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 20px auto;
+      padding: 0.75in 0.75in 0.75in 0.875in;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      page-break-after: always;
+    }
+    .page:last-child {
+      page-break-after: auto;
+    }
+    
+    /* === COVER PAGE === */
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 9.5in;
+    }
+    .cover-logo {
+      width: 180px;
+      height: auto;
+      margin-bottom: 40px;
+    }
+    .cover-title {
+      font-size: 36pt;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .cover-subtitle {
+      font-size: 18pt;
+      font-weight: 600;
+      color: var(--coral);
+      margin-bottom: 40px;
+    }
+    .cover-dealership {
+      font-size: 14pt;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    .cover-address {
+      font-size: 10pt;
+      color: #666;
+    }
+    .cover-footer {
+      position: absolute;
+      bottom: 0.75in;
+      font-size: 9pt;
+      color: #999;
+    }
+    
+    /* === TABLE OF CONTENTS === */
+    .toc-title {
+      font-size: 24pt;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--coral);
+    }
+    .toc-section {
+      margin-bottom: 20px;
+    }
+    .toc-section-title {
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--ocean);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .toc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 4px 0;
+      border-bottom: 1px dotted #ddd;
+    }
+    .toc-item-title {
+      font-size: 10pt;
+    }
+    .toc-item-page {
+      font-size: 10pt;
+      font-weight: 600;
+      color: var(--coral);
+    }
+    
+    /* === SECTION DIVIDERS === */
+    .section-divider {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 9.5in;
+      background: linear-gradient(135deg, var(--navy) 0%, #021947 100%);
+      color: white;
+      margin: -0.75in -0.75in -0.75in -0.875in;
+      padding: 0.75in;
+    }
+    .section-divider-num {
+      font-size: 120pt;
+      font-weight: 800;
+      opacity: 0.15;
+      position: absolute;
+    }
+    .section-divider-title {
+      font-size: 32pt;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .section-divider-subtitle {
+      font-size: 14pt;
+      opacity: 0.8;
+    }
+    
+    /* === HEADINGS === */
+    h1 {
+      font-size: 20pt;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 15px;
+      page-break-after: avoid;
+    }
+    h2 {
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--ocean);
+      margin: 20px 0 10px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #333;
+      margin: 15px 0 8px;
+      page-break-after: avoid;
+    }
+    
+    /* === STEP HEADER === */
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #eee;
+    }
+    .step-num {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--coral) 0%, var(--sunset) 100%);
+      color: white;
+      font-size: 28pt;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+    .step-info h1 {
+      margin-bottom: 5px;
+    }
+    .step-goal {
+      font-size: 10pt;
+      color: #666;
+    }
+    .step-meta {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+    }
+    .step-meta span {
+      font-size: 9pt;
+      color: #888;
+    }
+    
+    /* === CONTENT BLOCKS === */
+    p {
+      margin-bottom: 10px;
+    }
+    
+    .key-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 15px 0;
+    }
+    .key-action {
+      background: #f8f8f8;
+      border-radius: 8px;
+      padding: 12px;
+      border-left: 3px solid var(--ocean);
+    }
+    .key-action-title {
+      font-weight: 700;
+      font-size: 10pt;
+      margin-bottom: 4px;
+    }
+    .key-action-desc {
+      font-size: 9pt;
+      color: #555;
+    }
+    
+    /* === SCRIPT BOXES === */
+    .script-box {
+      background: #f8f8f8;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+    .script-header {
+      background: var(--coral);
+      color: white;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 10pt;
+    }
+    .script-body {
+      padding: 12px;
+    }
+    .script-line {
+      margin-bottom: 8px;
+    }
+    .script-line:last-child {
+      margin-bottom: 0;
+    }
+    .script-sales {
+      background: #e0f2fe;
+      border-left: 3px solid var(--ocean);
+      padding: 8px 10px;
+      border-radius: 0 6px 6px 0;
+    }
+    .script-sales-label {
+      font-size: 8pt;
+      font-weight: 700;
+      color: var(--ocean);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .script-customer {
+      background: #f3f4f6;
+      padding: 8px 10px;
+      margin-left: 20px;
+      border-radius: 6px;
+      font-style: italic;
+      color: #555;
+    }
+    .script-customer-label {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    
+    /* === TIP BOXES === */
+    .tip-box {
+      padding: 12px;
+      border-radius: 8px;
+      margin: 10px 0;
+      page-break-inside: avoid;
+    }
+    .tip-box.tip {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+    }
+    .tip-box.warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+    }
+    .tip-box.success {
+      background: #dcfce7;
+      border-left: 4px solid #16a34a;
+    }
+    .tip-box.danger {
+      background: #fee2e2;
+      border-left: 4px solid #ef4444;
+    }
+    .tip-title {
+      font-weight: 700;
+      font-size: 10pt;
+      margin-bottom: 4px;
+    }
+    .tip-content {
+      font-size: 9pt;
+    }
+    
+    /* === CHECKLISTS === */
+    .checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin: 15px 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 9pt;
+    }
+    .checkbox {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #ccc;
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    /* === TABLES === */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 9pt;
+    }
+    th {
+      background: var(--navy);
+      color: white;
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #eee;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    
+    /* === MISTAKES LIST === */
+    .mistakes-list {
+      background: #fef2f2;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 15px 0;
+    }
+    .mistakes-list h3 {
+      color: #dc2626;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+    .mistakes-list ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .mistakes-list li {
+      font-size: 9pt;
+      margin-bottom: 4px;
+      color: #7f1d1d;
+    }
+    
+    /* === IMAGE PLACEHOLDERS === */
+    .image-placeholder {
+      background: #f3f4f6;
+      border: 2px dashed #d1d5db;
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      margin: 15px 0;
+    }
+    .image-placeholder-text {
+      font-size: 10pt;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+    .image-placeholder-note {
+      font-size: 8pt;
+      color: #d1d5db;
+      margin-top: 5px;
+    }
+    
+    /* === TRANSITION BOX === */
+    .transition-box {
+      background: linear-gradient(135deg, #ecfeff 0%, #e0f2fe 100%);
+      border-left: 4px solid var(--ocean);
+      padding: 12px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+    .transition-label {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--ocean);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .transition-text {
+      font-size: 10pt;
+      font-style: italic;
+      color: #0e7490;
+    }
+    
+    /* === PAGE NUMBERS === */
+    .page-number {
+      position: absolute;
+      bottom: 0.5in;
+      right: 0.75in;
+      font-size: 9pt;
+      color: #999;
+    }
+    .page-section {
+      position: absolute;
+      bottom: 0.5in;
+      left: 0.875in;
+      font-size: 8pt;
+      color: #ccc;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* === UTILITY === */
+    .page-break { page-break-before: always; }
+    .no-break { page-break-inside: avoid; }
+    .text-center { text-align: center; }
+    .mb-0 { margin-bottom: 0; }
+    .mt-0 { margin-top: 0; }
+  </style>
+</head>
+<body>
+  <!-- Print Buttons -->
+  <div class="print-btn">
+    <button class="primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+    <button class="secondary" onclick="window.close()">✕ Close</button>
+  </div>
+
+  <!-- ==================== COVER PAGE ==================== -->
+  <div class="page">
+    <div class="cover-page">
+      <img src="https://res.cloudinary.com/dgcdcqjrz/image/upload/v1767624172/TOCC_BUG_-_COLOR_cag4ud.png" alt="Toyota of Coconut Creek" class="cover-logo">
+      <h1 class="cover-title">Sales Training Manual</h1>
+      <p class="cover-subtitle">Complete Guide to Automotive Sales Excellence</p>
+      <div style="margin-top: 40px;">
+        <p class="cover-dealership">Al Hendrickson Toyota Coconut Creek</p>
+        <p class="cover-address">5201 W Sample Rd, Coconut Creek, FL 33073</p>
+      </div>
+      <p class="cover-footer">Confidential Training Materials — For Internal Use Only</p>
+    </div>
+  </div>
+
+  <!-- ==================== TABLE OF CONTENTS ==================== -->
+  <div class="page">
+    <h1 class="toc-title">Table of Contents</h1>
+    
+    <div class="toc-section">
+      <div class="toc-section-title">Introduction</div>
+      <div class="toc-item"><span class="toc-item-title">Glossary of Terms</span><span class="toc-item-page">3</span></div>
+    </div>
+    
+    <div class="toc-section">
+      <div class="toc-section-title">Road to Sale</div>
+      <div class="toc-item"><span class="toc-item-title">Step 1: Meet & Greet</span><span class="toc-item-page">5</span></div>
+      <div class="toc-item"><span class="toc-item-title">Step 2: Qualify / Needs Assessment</span><span class="toc-item-page">7</span></div>
+      <div class="toc-item"><span class="toc-item-title">Step 3: Vehicle Selection</span><span class="toc-item-page">9</span></div>
+      <div class="toc-item"><span class="toc-item-title">Step 4: Walkaround / Presentation</span><span class="toc-item-page">11</span></div>
+      <div class="toc-item"><span class="toc-item-title">Step 5: Test Drive</span><span class="toc-item-page">13</span></div>
+      <div class="toc-item"><span class="toc-item-title">Step 6: Trial Close</span><span class="toc-item-page">15</span></div>
+      <div class="toc-item"><span class="toc-item-title">Step 7: Trade Evaluation</span><span class="toc-item-page">17</span></div>
+      <div class="toc-item"><span class="toc-item-title">Step 8: Write Up / Pencil</span><span class="toc-item-page">19</span></div>
+      <div class="toc-item"><span class="toc-item-title">Step 9: Negotiation & Close</span><span class="toc-item-page">21</span></div>
+      <div class="toc-item"><span class="toc-item-title">Step 10: Delivery</span><span class="toc-item-page">23</span></div>
+    </div>
+    
+    <div class="toc-section">
+      <div class="toc-section-title">Building Value</div>
+      <div class="toc-item"><span class="toc-item-title">ToyotaCare & Toyoguard Platinum</span><span class="toc-item-page">25</span></div>
+      <div class="toc-item"><span class="toc-item-title">Toyota Safety Sense 3.0</span><span class="toc-item-page">26</span></div>
+      <div class="toc-item"><span class="toc-item-title">Premium Protect Plus</span><span class="toc-item-page">27</span></div>
+      <div class="toc-item"><span class="toc-item-title">Reading Window Stickers</span><span class="toc-item-page">28</span></div>
+    </div>
+    
+    <div class="toc-section">
+      <div class="toc-section-title">Skills & Techniques</div>
+      <div class="toc-item"><span class="toc-item-title">Phone Skills & Scripts</span><span class="toc-item-page">30</span></div>
+      <div class="toc-item"><span class="toc-item-title">Objection Handling (L.A.R.C.)</span><span class="toc-item-page">32</span></div>
+    </div>
+    
+    <div class="toc-section">
+      <div class="toc-section-title">Appendices</div>
+      <div class="toc-item"><span class="toc-item-title">Appendix A: Forms Reference</span><span class="toc-item-page">34</span></div>
+      <div class="toc-item"><span class="toc-item-title">Appendix B: Scripts Reference</span><span class="toc-item-page">36</span></div>
+    </div>
+  </div>
+
+  <!-- ==================== GLOSSARY ==================== -->
+  <div class="page">
+    <h1>Glossary of Terms</h1>
+    <p>Common automotive sales terminology you'll encounter daily.</p>
+    
+    <table>
+      <thead>
+        <tr><th style="width: 25%;">Term</th><th>Definition</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>ACV</strong></td><td>Actual Cash Value — The true market value of a trade-in vehicle</td></tr>
+        <tr><td><strong>Be-Back</strong></td><td>A customer who returns to the dealership after an initial visit</td></tr>
+        <tr><td><strong>Closer</strong></td><td>A salesperson or manager skilled at finalizing deals</td></tr>
+        <tr><td><strong>CSI</strong></td><td>Customer Satisfaction Index — Survey measuring customer experience</td></tr>
+        <tr><td><strong>Desk / Desking</strong></td><td>The process of structuring a deal with management</td></tr>
+        <tr><td><strong>F&I</strong></td><td>Finance & Insurance department</td></tr>
+        <tr><td><strong>Four-Square</strong></td><td>Worksheet showing price, trade, down payment, and payment</td></tr>
+        <tr><td><strong>Gross</strong></td><td>Profit on a deal before expenses</td></tr>
+        <tr><td><strong>Hot Button</strong></td><td>Key emotional trigger that motivates a buying decision</td></tr>
+        <tr><td><strong>Monroney</strong></td><td>The official window sticker (required by law since 1958)</td></tr>
+        <tr><td><strong>MSRP</strong></td><td>Manufacturer's Suggested Retail Price</td></tr>
+        <tr><td><strong>Negative Equity</strong></td><td>When trade-in payoff exceeds vehicle value (upside down)</td></tr>
+        <tr><td><strong>Pencil</strong></td><td>The first written offer presented to a customer</td></tr>
+        <tr><td><strong>PPP</strong></td><td>Premium Protect Plus — Our included protection package</td></tr>
+        <tr><td><strong>Spiff</strong></td><td>Bonus payment for selling specific vehicles or products</td></tr>
+        <tr><td><strong>T.O.</strong></td><td>Turn Over — Introducing a manager to assist with a deal</td></tr>
+        <tr><td><strong>TCUV</strong></td><td>Toyota Certified Used Vehicle</td></tr>
+        <tr><td><strong>ToyotaCare</strong></td><td>Complimentary maintenance program (2yr/25k)</td></tr>
+        <tr><td><strong>Toyoguard</strong></td><td>Extended maintenance/protection package we include</td></tr>
+        <tr><td><strong>TSS</strong></td><td>Toyota Safety Sense — Standard safety technology suite</td></tr>
+        <tr><td><strong>Up</strong></td><td>A customer opportunity (walk-in, phone call, internet lead)</td></tr>
+      </tbody>
+    </table>
+    <span class="page-section">Glossary</span>
+    <span class="page-number">3</span>
+  </div>
+
+  <!-- ==================== ROAD TO SALE DIVIDER ==================== -->
+  <div class="page">
+    <div class="section-divider">
+      <span class="section-divider-num">10</span>
+      <h2 class="section-divider-title">Road to Sale</h2>
+      <p class="section-divider-subtitle">Your 10-Step Process to Sales Excellence</p>
+    </div>
+  </div>
+
+  <!-- ==================== STEP 1: MEET & GREET ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-info">
+        <h1 class="mb-0">Meet & Greet</h1>
+        <p class="step-goal">Build rapport and establish trust within the first 30 seconds</p>
+        <div class="step-meta">
+          <span>⏱️ 2-5 minutes</span>
+          <span>📊 40% of sale success determined here</span>
+        </div>
+      </div>
+    </div>
+
+    <p>First impressions are everything in automotive sales. The Meet & Greet sets the tone for the entire customer experience. Studies show that customers decide within the first 10 seconds whether they trust you.</p>
+    
+    <p>A proper Meet & Greet isn't about jumping into a sales pitch—it's about creating a human connection. Remember: people buy from people they like and trust.</p>
+
+    <h2>Key Actions</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">👁️ Acknowledge Immediately</div>
+        <div class="key-action-desc">Make eye contact and smile within 10 seconds, even if you're busy.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">👔 Professional Appearance</div>
+        <div class="key-action-desc">Dress code compliance, name badge visible, confident posture.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">😊 Warm Greeting</div>
+        <div class="key-action-desc">Enthusiastic but not overwhelming. Match their energy level.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📝 Get Their Name</div>
+        <div class="key-action-desc">Learn and use their name 2-3 times naturally in conversation.</div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Standard Opening Script</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Welcome to Al Hendrickson Toyota! How are you doing today?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "Good, thanks. Just looking around."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Absolutely, that's what we're here for. I'm [Name], and you are?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 The 70/30 Rule Starts Here</div>
+      <div class="tip-content">Let the customer do 70% of the talking from the very beginning. Ask open-ended questions and actively listen.</div>
+    </div>
+
+    <div class="tip-box warning">
+      <div class="tip-title">⚠️ Never Say "Can I Help You?"</div>
+      <div class="tip-content">This invites "No, just looking." Instead, make a statement or ask an engaging question.</div>
+    </div>
+
+    <h2>Step Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox"></div> Acknowledged customer within 10 seconds</div>
+      <div class="checklist-item"><div class="checkbox"></div> Introduced myself with name and position</div>
+      <div class="checklist-item"><div class="checkbox"></div> Got customer's name and used it</div>
+      <div class="checklist-item"><div class="checkbox"></div> Offered a business card</div>
+      <div class="checklist-item"><div class="checkbox"></div> Set expectations (no pressure, here to help)</div>
+      <div class="checklist-item"><div class="checkbox"></div> Identified who else is involved in decision</div>
+    </div>
+
+    <div class="transition-box">
+      <div class="transition-label">Transition to Step 2</div>
+      <div class="transition-text">"Let me ask you a few questions so I can point you in the right direction..."</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 1</span>
+    <span class="page-number">5</span>
+  </div>
+
+  <!-- ==================== STEP 2: QUALIFY ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div class="step-info">
+        <h1 class="mb-0">Qualify / Needs Assessment</h1>
+        <p class="step-goal">Understand their needs, wants, timeline, and buying situation</p>
+        <div class="step-meta">
+          <span>⏱️ 10-15 minutes</span>
+          <span>📊 Identify hot buttons for later</span>
+        </div>
+      </div>
+    </div>
+
+    <p>The Qualify step is where you become a consultant, not a salesperson. Your job is to understand everything about their situation: what they need, what they want, who's involved in the decision, when they're looking to buy, and what their budget looks like.</p>
+
+    <h2>Key Actions</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">❓ Ask Open-Ended Questions</div>
+        <div class="key-action-desc">Use who, what, when, where, why, how questions to open conversation.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🔥 Identify Hot Buttons</div>
+        <div class="key-action-desc">Listen for emotional triggers: safety, reliability, technology, style.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📅 Qualify Timeline</div>
+        <div class="key-action-desc">"When do you need to have this decision made?"</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">💰 Understand Budget</div>
+        <div class="key-action-desc">Payment-focused or price-focused? Get a range if possible.</div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Discovery Questions Flow</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "So, John, tell me a little about what brings you in today. What are you currently driving?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "A 2019 Camry. Looking to get into something bigger."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Got it—looking for more space. Is that for family, cargo, or both?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 Take Notes</div>
+      <div class="tip-content">Write down key details. It shows you're listening and helps you reference hot buttons later.</div>
+    </div>
+
+    <h2>The 5 Key Areas to Qualify</h2>
+    <table>
+      <thead><tr><th>Area</th><th>Questions to Ask</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Current Situation</strong></td><td>What are you driving now? What do you like/dislike about it?</td></tr>
+        <tr><td><strong>Primary Use</strong></td><td>How will this vehicle be used? Commute? Family? Work?</td></tr>
+        <tr><td><strong>Decision Makers</strong></td><td>Is there anyone else involved in this decision?</td></tr>
+        <tr><td><strong>Timeline</strong></td><td>When do you need to have a decision made?</td></tr>
+        <tr><td><strong>Budget</strong></td><td>Monthly payment or total price focus? What range?</td></tr>
+      </tbody>
+    </table>
+
+    <div class="mistakes-list no-break">
+      <h3>❌ Common Mistakes</h3>
+      <ul>
+        <li>Asking too many closed-ended (yes/no) questions</li>
+        <li>Not listening—just waiting to talk</li>
+        <li>Assuming you know what they want</li>
+        <li>Forgetting to ask about the trade</li>
+        <li>Moving to vehicle selection before fully qualifying</li>
+      </ul>
+    </div>
+
+    <div class="transition-box">
+      <div class="transition-label">Transition to Step 3</div>
+      <div class="transition-text">"Based on what you've told me, I have a couple vehicles in mind. Let me show you..."</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 2</span>
+    <span class="page-number">7</span>
+  </div>
+
+  <!-- ==================== STEP 3: VEHICLE SELECTION ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-info">
+        <h1 class="mb-0">Vehicle Selection</h1>
+        <p class="step-goal">Select the right vehicle(s) based on their qualified needs</p>
+        <div class="step-meta">
+          <span>⏱️ 5-10 minutes</span>
+          <span>📊 Limit to 2-3 options maximum</span>
+        </div>
+      </div>
+    </div>
+
+    <p>Now it's time to match their needs to inventory. The key here is to select vehicles strategically—not just show them everything on the lot. Too many options leads to analysis paralysis.</p>
+
+    <h2>Key Actions</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">📋 Review Your Notes</div>
+        <div class="key-action-desc">Before walking to inventory, review what you learned about their hot buttons.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">✌️ Limit Options</div>
+        <div class="key-action-desc">Show 2-3 vehicles maximum. "I've picked out two that are perfect for you."</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🎯 Lead with Best Fit</div>
+        <div class="key-action-desc">Start with the vehicle that best matches their needs, not highest profit.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🌱 Plant Seeds</div>
+        <div class="key-action-desc">Mention key features as you walk: "This one has the TSS 3.0 you'll love."</div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Presenting Options</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Based on what you've told me—growing family, need more space, safety is a priority—I've got two vehicles I think you'll love."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "First is the Highlander. It's our most popular family SUV—three rows, standard Toyota Safety Sense, incredibly reliable."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 Use "Perfect For" Language</div>
+      <div class="tip-content">"This would be perfect for your situation because..." connects features to their stated needs.</div>
+    </div>
+
+    <div class="tip-box warning">
+      <div class="tip-title">⚠️ Avoid Information Overload</div>
+      <div class="tip-content">Don't rattle off every spec. Focus on 2-3 features that directly relate to their hot buttons.</div>
+    </div>
+
+    <h2>Step Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox"></div> Selected 2-3 vehicles based on qualification</div>
+      <div class="checklist-item"><div class="checkbox"></div> Checked vehicle availability and location</div>
+      <div class="checklist-item"><div class="checkbox"></div> Verified vehicle is clean and presentable</div>
+      <div class="checklist-item"><div class="checkbox"></div> Grabbed keys if needed</div>
+      <div class="checklist-item"><div class="checkbox"></div> Connected features to hot buttons</div>
+      <div class="checklist-item"><div class="checkbox"></div> Used assumptive language</div>
+    </div>
+
+    <div class="transition-box">
+      <div class="transition-label">Transition to Step 4</div>
+      <div class="transition-text">"Let me walk you through this vehicle and show you exactly why I think it's perfect for you..."</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 3</span>
+    <span class="page-number">9</span>
+  </div>
+
+  <!-- ==================== STEP 4: WALKAROUND ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div class="step-info">
+        <h1 class="mb-0">Walkaround / Presentation</h1>
+        <p class="step-goal">Build value and excitement through professional vehicle presentation</p>
+        <div class="step-meta">
+          <span>⏱️ 15-20 minutes</span>
+          <span>📊 Touch every feature you mention</span>
+        </div>
+      </div>
+    </div>
+
+    <p>The walkaround is your chance to showcase the vehicle and build value. This isn't about listing features—it's about connecting features to benefits that matter to THIS customer.</p>
+    
+    <p>Use the <strong>6-point walkaround method</strong>: Front, Driver Side, Rear, Passenger Side, Engine, and Interior. Touch every feature you mention—physical engagement increases retention by 50%.</p>
+
+    <h2>6-Point Walkaround Method</h2>
+    <table>
+      <thead><tr><th>Position</th><th>Focus Areas</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. Front</strong></td><td>Grille, headlights, TSS sensors, styling</td></tr>
+        <tr><td><strong>2. Driver Side</strong></td><td>Door handles, mirrors, entry features</td></tr>
+        <tr><td><strong>3. Rear</strong></td><td>Cargo space, tailgate, taillights, towing</td></tr>
+        <tr><td><strong>4. Passenger Side</strong></td><td>Family features, rear seat access</td></tr>
+        <tr><td><strong>5. Engine Bay</strong></td><td>Powertrain, efficiency, reliability</td></tr>
+        <tr><td><strong>6. Interior</strong></td><td>Seating, technology, comfort, storage</td></tr>
+      </tbody>
+    </table>
+
+    <div class="script-box">
+      <div class="script-header">TSS 3.0 Presentation Script</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "You mentioned safety is your top priority with the kids. Look here—behind this emblem is the radar and camera for Toyota Safety Sense 3.0."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "It's like having a co-pilot that's always watching. If it detects a potential collision, it can alert you and even brake automatically."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box success">
+      <div class="tip-title">✅ Window Sticker Walkthrough</div>
+      <div class="tip-content">Use the window sticker as a trust-building tool. Walk through MSRP, packages, standard features, and fuel economy. See the "Reading Window Stickers" section.</div>
+    </div>
+
+    <h2>Step Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox"></div> Started at the front of the vehicle</div>
+      <div class="checklist-item"><div class="checkbox"></div> Covered all 6 walkaround points</div>
+      <div class="checklist-item"><div class="checkbox"></div> Had customer sit in driver's seat</div>
+      <div class="checklist-item"><div class="checkbox"></div> Connected features to hot buttons</div>
+      <div class="checklist-item"><div class="checkbox"></div> Mentioned ToyotaCare & Toyoguard</div>
+      <div class="checklist-item"><div class="checkbox"></div> Explained TSS 3.0 safety features</div>
+    </div>
+
+    <div class="transition-box">
+      <div class="transition-label">Transition to Step 5</div>
+      <div class="transition-text">"Now that you've seen it, let's take it for a drive so you can really experience what it's like..."</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 4</span>
+    <span class="page-number">11</span>
+  </div>
+
+  <!-- ==================== STEP 5: TEST DRIVE ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <div class="step-info">
+        <h1 class="mb-0">Test Drive</h1>
+        <p class="step-goal">Let them experience ownership and fall in love with the vehicle</p>
+        <div class="step-meta">
+          <span>⏱️ 20-30 minutes</span>
+          <span>📊 Test drives increase closing rate by 50%</span>
+        </div>
+      </div>
+    </div>
+
+    <p>The test drive is the most powerful step in the sales process. It's where the customer mentally transitions from "shopping" to "owning." Every minute on a test drive increases your closing probability.</p>
+
+    <h2>Key Actions</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">🔑 Always Offer the Drive</div>
+        <div class="key-action-desc">"Let me get the keys so you can see how it feels." Not "Would you like to drive?"</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">⚙️ Pre-Drive Setup</div>
+        <div class="key-action-desc">Adjust seat, mirrors, wheel. Pair their phone to Bluetooth.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🗺️ Planned Route</div>
+        <div class="key-action-desc">Highway (power), neighborhoods (comfort), varied surfaces. 10-15 min minimum.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">💬 Trial Close Questions</div>
+        <div class="key-action-desc">"How do you like the acceleration?" "Could you see yourself in this daily?"</div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">During the Test Drive</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Go ahead and merge onto the highway here. Feel that acceleration?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "Wow, it really moves."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "That's the V6. And notice how quiet it is even at highway speed? Imagine your commute feeling like this every day..."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 Smartphone Integration</div>
+      <div class="tip-content">Before the drive, pair their phone and play their music. It creates instant ownership feeling when they hear their playlist through the car speakers.</div>
+    </div>
+
+    <div class="tip-box warning">
+      <div class="tip-title">⚠️ Don't Over-Talk</div>
+      <div class="tip-content">Let them enjoy the experience. Periods of silence are okay—let them absorb the drive.</div>
+    </div>
+
+    <h2>Step Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox"></div> Got valid driver's license copied</div>
+      <div class="checklist-item"><div class="checkbox"></div> Adjusted seat, mirrors, and wheel</div>
+      <div class="checklist-item"><div class="checkbox"></div> Paired their phone for Bluetooth</div>
+      <div class="checklist-item"><div class="checkbox"></div> Used a planned demonstration route</div>
+      <div class="checklist-item"><div class="checkbox"></div> Let customer drive majority of time</div>
+      <div class="checklist-item"><div class="checkbox"></div> Asked trial close questions</div>
+      <div class="checklist-item"><div class="checkbox"></div> All decision-makers got to drive</div>
+    </div>
+
+    <div class="transition-box">
+      <div class="transition-label">Transition to Step 6</div>
+      <div class="transition-text">"So, what do you think? Is this the one you've been looking for?"</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 5</span>
+    <span class="page-number">13</span>
+  </div>
+
+  <!-- ==================== STEP 6: TRIAL CLOSE ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">6</div>
+      <div class="step-info">
+        <h1 class="mb-0">Trial Close</h1>
+        <p class="step-goal">Confirm interest, identify concerns, and prepare for the write-up</p>
+        <div class="step-meta">
+          <span>⏱️ 5-10 minutes</span>
+          <span>📊 Uncover objections early</span>
+        </div>
+      </div>
+    </div>
+
+    <p>The trial close happens after the test drive while emotions are high. You're not asking them to buy—you're confirming they've found the right vehicle and identifying any remaining concerns.</p>
+
+    <h2>Key Actions</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">🅿️ Park and Pivot</div>
+        <div class="key-action-desc">Park in delivery area. Turn toward them and have a conversation—don't rush inside.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">💬 Assumptive Language</div>
+        <div class="key-action-desc">Use "when" not "if": "When you take this home..." not "If you decide to buy..."</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">✅ Confirm Vehicle</div>
+        <div class="key-action-desc">"So, is this the one? Based on everything, this seems perfect for you."</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🎯 Identify Concerns</div>
+        <div class="key-action-desc">"What questions do you still have?" "Anything holding you back?"</div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Post-Drive Trial Close</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "So, what do you think? How did it compare to what you expected?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "It's really nice. We liked it."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "I could tell by your faces during the drive! Is this the vehicle you've been looking for, or do you want to see something else?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 Stay by the Vehicle</div>
+      <div class="tip-content">Have this conversation by the vehicle—their emotional connection is strongest right now. Going inside breaks that connection.</div>
+    </div>
+
+    <h2>Step Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox"></div> Asked how they liked the test drive</div>
+      <div class="checklist-item"><div class="checkbox"></div> Confirmed this is the right vehicle</div>
+      <div class="checklist-item"><div class="checkbox"></div> Identified any remaining concerns</div>
+      <div class="checklist-item"><div class="checkbox"></div> Identified all decision makers</div>
+      <div class="checklist-item"><div class="checkbox"></div> Got commitment to move forward</div>
+    </div>
+
+    <div class="transition-box">
+      <div class="transition-label">Transition to Step 7</div>
+      <div class="transition-text">"Great! While we work on some numbers, let me get some information about your trade-in..."</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 6</span>
+    <span class="page-number">15</span>
+  </div>
+
+  <!-- ==================== STEP 7: TRADE EVALUATION ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">7</div>
+      <div class="step-info">
+        <h1 class="mb-0">Trade Evaluation</h1>
+        <p class="step-goal">Accurately appraise the trade-in while managing expectations</p>
+        <div class="step-meta">
+          <span>⏱️ 15-20 minutes</span>
+          <span>📊 Transparency builds trust</span>
+        </div>
+      </div>
+    </div>
+
+    <p>Trade evaluation is where deals can go off the rails if not handled properly. Customers almost always overvalue their trade because of emotional attachment. Your job is to set realistic expectations while gathering accurate information.</p>
+
+    <h2>Key Actions</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">👀 Walk the Trade Together</div>
+        <div class="key-action-desc">Don't disappear with keys. Walk around WITH the customer, pointing out what you see.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📸 Document Everything</div>
+        <div class="key-action-desc">Note every scratch, dent, stain. Take photos. This protects you and sets expectations.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📋 Ask About History</div>
+        <div class="key-action-desc">Accidents, service history, payoff amount. Get honest answers upfront.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📊 Use Market Data</div>
+        <div class="key-action-desc">Show vAuto or similar data. Third-party validation is more credible than "trust me."</div>
+      </div>
+    </div>
+
+    <div class="image-placeholder">
+      <div class="image-placeholder-text">📊 vAuto Market Report Screenshot</div>
+      <div class="image-placeholder-note">Insert screenshot showing market comparison data</div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Managing Trade Value Expectations</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "I was hoping to get at least $25,000 for my trade."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "I understand—it's been a great vehicle for you. Let me show you something..."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "[Showing vAuto] This shows what similar vehicles with your mileage are actually selling for at auction. We want to give you a fair number based on the market."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box warning">
+      <div class="tip-title">⚠️ Never Belittle Their Trade</div>
+      <div class="tip-content">Even if it's rough, it's their car. "I can see you've taken care of it" goes further than pointing out every flaw.</div>
+    </div>
+
+    <h2>Step Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox"></div> Walked around trade with customer</div>
+      <div class="checklist-item"><div class="checkbox"></div> Documented condition (photos/notes)</div>
+      <div class="checklist-item"><div class="checkbox"></div> Asked about accident history</div>
+      <div class="checklist-item"><div class="checkbox"></div> Got payoff amount and lender</div>
+      <div class="checklist-item"><div class="checkbox"></div> Showed market data (vAuto)</div>
+      <div class="checklist-item"><div class="checkbox"></div> Set realistic expectations</div>
+    </div>
+
+    <div class="transition-box">
+      <div class="transition-label">Transition to Step 8</div>
+      <div class="transition-text">"While they're finalizing your trade value, let me get some information to put together numbers for you..."</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 7</span>
+    <span class="page-number">17</span>
+  </div>
+
+  <!-- ==================== STEP 8: WRITE UP ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">8</div>
+      <div class="step-info">
+        <h1 class="mb-0">Write Up / Pencil</h1>
+        <p class="step-goal">Present a complete deal structure to the customer</p>
+        <div class="step-meta">
+          <span>⏱️ 15-20 minutes</span>
+          <span>📊 First pencil sets the tone</span>
+        </div>
+      </div>
+    </div>
+
+    <p>The write-up is where you structure the deal and present your first offer. This is where your CRM and desking tools become essential. The first pencil sets the tone for negotiation.</p>
+
+    <h2>Key Actions</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">📝 Gather Information</div>
+        <div class="key-action-desc">Customer info, trade details, desired vehicle, stated budget. Be complete.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">👥 Work With Manager</div>
+        <div class="key-action-desc">Present the situation including hot buttons, concerns, and relevant details.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🧮 Understand Numbers</div>
+        <div class="key-action-desc">Know what every number means before presenting. Don't guess.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">💪 Present Confidently</div>
+        <div class="key-action-desc">Don't apologize for numbers. Present complete picture with value ties.</div>
+      </div>
+    </div>
+
+    <div class="image-placeholder">
+      <div class="image-placeholder-text">💻 DriveCentric Desking Screenshot</div>
+      <div class="image-placeholder-note">Insert screenshot showing deal structure presentation</div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Presenting the Pencil</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Okay, I've got some great news. Let me walk you through what we worked out."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "For the Highlander, you're looking at [price]. With your trade valued at [amount], that brings your amount to finance to [amount]. At 72 months with approved credit, that puts your payment around [payment]."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "How does that look to you?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box success">
+      <div class="tip-title">✅ Tie Back to Value</div>
+      <div class="tip-content">"Remember the ToyotaCare, Toyoguard, TSS 3.0, and Premium Protect Plus? That's all included in this price—over $6,500 in value."</div>
+    </div>
+
+    <h2>Step Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox"></div> Collected all customer information</div>
+      <div class="checklist-item"><div class="checkbox"></div> Verified trade payoff and value</div>
+      <div class="checklist-item"><div class="checkbox"></div> Presented deal to desk manager</div>
+      <div class="checklist-item"><div class="checkbox"></div> Understood all numbers</div>
+      <div class="checklist-item"><div class="checkbox"></div> Presented pencil professionally</div>
+      <div class="checklist-item"><div class="checkbox"></div> Tied price to value</div>
+    </div>
+
+    <div class="transition-box">
+      <div class="transition-label">Transition to Step 9</div>
+      <div class="transition-text">"What are your thoughts on these numbers? Let's see what we can do..."</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 8</span>
+    <span class="page-number">19</span>
+  </div>
+
+  <!-- ==================== STEP 9: NEGOTIATION ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">9</div>
+      <div class="step-info">
+        <h1 class="mb-0">Negotiation & Close</h1>
+        <p class="step-goal">Work through objections and reach a mutually agreeable deal</p>
+        <div class="step-meta">
+          <span>⏱️ 20-45 minutes</span>
+          <span>📊 Win-win deals create referrals</span>
+        </div>
+      </div>
+    </div>
+
+    <p>Negotiation isn't a battle—it's a collaborative process to find a deal that works for everyone. Use the <strong>L.A.R.C. method</strong> for objections: Listen, Acknowledge, Respond, Close.</p>
+
+    <h2>The L.A.R.C. Method</h2>
+    <table>
+      <thead><tr><th style="width: 20%;">Step</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><strong>L — Listen</strong></td><td>Let them finish completely. Don't interrupt or get defensive.</td></tr>
+        <tr><td><strong>A — Acknowledge</strong></td><td>"I completely understand how you feel..." Validates their concern.</td></tr>
+        <tr><td><strong>R — Respond</strong></td><td>Answer with value, not just concessions. Why is this fair?</td></tr>
+        <tr><td><strong>C — Close</strong></td><td>"Does that address your concern? Are we ready to move forward?"</td></tr>
+      </tbody>
+    </table>
+
+    <div class="script-box">
+      <div class="script-header">L.A.R.C. in Action — Price Objection</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "That's more than I wanted to spend."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Listen]</div>
+            Let them finish, nod, show you're hearing them.
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Acknowledge]</div>
+            "I understand—staying within budget is important."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "Let me remind you of the value: ToyotaCare, Toyoguard, TSS 3.0, Premium Protect Plus—that's over $6,500 included."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Close]</div>
+            "If we can work on down payment or term, we might hit your payment. Would that help?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 Silence is Golden</div>
+      <div class="tip-content">After presenting numbers or responding to an objection, stop talking. Let them process. Silence makes people uncomfortable—they'll fill it.</div>
+    </div>
+
+    <div class="tip-box warning">
+      <div class="tip-title">⚠️ Don't Give Without Getting</div>
+      <div class="tip-content">If you make a concession, get a commitment: "If I can get you X, are you ready to move forward today?"</div>
+    </div>
+
+    <h2>Step Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox"></div> Listened to all concerns completely</div>
+      <div class="checklist-item"><div class="checkbox"></div> Acknowledged their position</div>
+      <div class="checklist-item"><div class="checkbox"></div> Responded with value points</div>
+      <div class="checklist-item"><div class="checkbox"></div> Asked closing questions</div>
+      <div class="checklist-item"><div class="checkbox"></div> Got commitment before concessions</div>
+      <div class="checklist-item"><div class="checkbox"></div> Got signatures on deal</div>
+    </div>
+
+    <div class="transition-box">
+      <div class="transition-label">Transition to Step 10</div>
+      <div class="transition-text">"Congratulations! Let me get your paperwork started and introduce you to our finance team..."</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 9</span>
+    <span class="page-number">21</span>
+  </div>
+
+  <!-- ==================== STEP 10: DELIVERY ==================== -->
+  <div class="page">
+    <div class="step-header">
+      <div class="step-num">10</div>
+      <div class="step-info">
+        <h1 class="mb-0">Delivery</h1>
+        <p class="step-goal">Create a memorable experience that generates referrals</p>
+        <div class="step-meta">
+          <span>⏱️ 30-45 minutes</span>
+          <span>📊 CSI scores drive future business</span>
+        </div>
+      </div>
+    </div>
+
+    <p>The delivery is NOT the end—it's the beginning of a relationship. A great delivery experience generates referrals, repeat business, and positive reviews. Take your time and make it special.</p>
+
+    <h2>Key Actions</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">✨ Prepare the Vehicle</div>
+        <div class="key-action-desc">Immaculate, full tank, plates, all stickers removed, delivery area.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📱 Technology Setup</div>
+        <div class="key-action-desc">Pair phones, set radio presets, program garage door opener.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📋 Walk Through Features</div>
+        <div class="key-action-desc">Review key features, safety systems, technology. Don't assume they know.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📸 Create a Memory</div>
+        <div class="key-action-desc">Photo by the car with a bow. Make it social media worthy.</div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Referral Ask</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "I really enjoyed working with you today. Who else do you know that might be shopping for a vehicle soon?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "Actually, my brother was talking about getting a truck."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Perfect! Let me give you a couple of my cards. When he's ready, have him ask for me and I'll make sure he's taken care of."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box success">
+      <div class="tip-title">✅ Schedule Service Before They Leave</div>
+      <div class="tip-content">Book their first service appointment before they leave. It ensures they come back and keeps them in the Toyota family.</div>
+    </div>
+
+    <h2>Delivery Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox"></div> Vehicle clean and fueled</div>
+      <div class="checklist-item"><div class="checkbox"></div> All paperwork present</div>
+      <div class="checklist-item"><div class="checkbox"></div> Phones paired to Bluetooth</div>
+      <div class="checklist-item"><div class="checkbox"></div> Radio presets programmed</div>
+      <div class="checklist-item"><div class="checkbox"></div> Reviewed safety features</div>
+      <div class="checklist-item"><div class="checkbox"></div> Explained ToyotaCare & service</div>
+      <div class="checklist-item"><div class="checkbox"></div> Took delivery photos</div>
+      <div class="checklist-item"><div class="checkbox"></div> Asked for referrals</div>
+      <div class="checklist-item"><div class="checkbox"></div> Got review commitment</div>
+      <div class="checklist-item"><div class="checkbox"></div> Scheduled first service</div>
+      <div class="checklist-item"><div class="checkbox"></div> Follow up within 24 hours</div>
+    </div>
+    
+    <span class="page-section">Road to Sale — Step 10</span>
+    <span class="page-number">23</span>
+  </div>
+
+  <!-- ==================== BUILDING VALUE DIVIDER ==================== -->
+  <div class="page">
+    <div class="section-divider">
+      <span class="section-divider-num">$</span>
+      <h2 class="section-divider-title">Building Value</h2>
+      <p class="section-divider-subtitle">Programs That Set Us Apart</p>
+    </div>
+  </div>
+
+  <!-- ==================== TOYOTACARE & TOYOGUARD ==================== -->
+  <div class="page">
+    <h1>ToyotaCare & Toyoguard Platinum</h1>
+    <p>Every new Toyota comes with ToyotaCare. At Al Hendrickson Toyota Coconut Creek, we <strong>also include Toyoguard Platinum at no extra charge</strong>—extending your coverage significantly beyond the standard program.</p>
+
+    <h2>Coverage Comparison</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Benefit</th>
+          <th>ToyotaCare (Standard)</th>
+          <th>+ Toyoguard (We Include)</th>
+          <th>Total Coverage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Oil Changes</strong></td><td>2yr / 25k</td><td>+2 synthetic</td><td>~4 Years</td></tr>
+        <tr><td><strong>Tire Rotations</strong></td><td>2yr / 25k</td><td>+4 rotations</td><td>~4 Years</td></tr>
+        <tr><td><strong>Roadside Assistance</strong></td><td>2 years</td><td>Extended</td><td>5yr / 60k</td></tr>
+        <tr><td><strong>Rental Car</strong></td><td>—</td><td>5 uses ($42/day)</td><td>5yr / 60k</td></tr>
+        <tr><td><strong>Paint Sealant</strong></td><td>—</td><td>✓ Applied</td><td>3yr / 36k warranty</td></tr>
+        <tr><td><strong>Interior Protector</strong></td><td>—</td><td>✓ Applied</td><td>3yr / 36k warranty</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box success">
+      <div class="tip-title">💬 Key Talking Points</div>
+      <div class="tip-content">
+        <ul style="margin: 0; padding-left: 20px;">
+          <li>"Your maintenance is covered for nearly 5 years—just bring it in, we take care of it."</li>
+          <li>"This coverage transfers to the next owner, which helps your resale value."</li>
+          <li>"Most dealers don't include Toyoguard—we add it at no extra charge."</li>
+        </ul>
+      </div>
+    </div>
+    
+    <span class="page-section">Building Value</span>
+    <span class="page-number">25</span>
+  </div>
+
+  <!-- ==================== TSS 3.0 ==================== -->
+  <div class="page">
+    <h1>Toyota Safety Sense 3.0</h1>
+    <p>Toyota Safety Sense 3.0 is our most advanced safety suite—and it's <strong>standard on every new Toyota</strong>. This isn't an option package. It's built in.</p>
+
+    <h2>Six Core Features</h2>
+    <table>
+      <thead><tr><th style="width: 15%;">Code</th><th style="width: 30%;">Feature</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><strong>PCS</strong></td><td>Pre-Collision System</td><td>Detects vehicles, pedestrians, cyclists—can brake automatically</td></tr>
+        <tr><td><strong>DRCC</strong></td><td>Dynamic Radar Cruise</td><td>Maintains distance from vehicle ahead, adjusts speed automatically</td></tr>
+        <tr><td><strong>LDA</strong></td><td>Lane Departure Alert</td><td>Warns if you drift out of lane unintentionally</td></tr>
+        <tr><td><strong>LTA</strong></td><td>Lane Tracing Assist</td><td>Helps keep you centered in lane on highways</td></tr>
+        <tr><td><strong>AHB</strong></td><td>Automatic High Beams</td><td>Switches between high/low based on traffic</td></tr>
+        <tr><td><strong>RSA</strong></td><td>Road Sign Assist</td><td>Displays speed limits and stop signs on dashboard</td></tr>
+      </tbody>
+    </table>
+
+    <div class="script-box">
+      <div class="script-header">Script for Safety-Focused Customers</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "You mentioned safety is your top priority. See this sensor behind the Toyota emblem? That's part of Toyota Safety Sense 3.0. It's like having a co-pilot that's always watching. If someone stops suddenly or a pedestrian steps into the road, this system can alert you and even brake automatically. And here's the best part—it's standard. Every new Toyota has this."
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <span class="page-section">Building Value</span>
+    <span class="page-number">26</span>
+  </div>
+
+  <!-- ==================== PREMIUM PROTECT PLUS ==================== -->
+  <div class="page">
+    <h1>Premium Protect Plus</h1>
+    <p>Premium Protect Plus is our exclusive protection package that comes with every new vehicle from Al Hendrickson Toyota Coconut Creek. This is <strong>over $6,500 in value at no extra cost</strong>.</p>
+
+    <h2>What's Included</h2>
+    <table>
+      <thead><tr><th>Item</th><th style="width: 15%;">Value</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Nitrogen-Filled Tires</strong></td><td>$299</td><td>Better pressure retention, longer tire life</td></tr>
+        <tr><td><strong>All-Weather Floor Mats</strong></td><td>$350</td><td>Custom-fit protection for every season</td></tr>
+        <tr><td><strong>Door Edge Guards</strong></td><td>$199</td><td>Prevents chips from parking lot dings</td></tr>
+        <tr><td><strong>Paint Protection Film</strong></td><td>$1,499</td><td>Invisible shield on high-impact areas</td></tr>
+        <tr><td><strong>Interior Protection</strong></td><td>$899</td><td>Fabric/leather guard against stains</td></tr>
+        <tr><td><strong>Theft Deterrent</strong></td><td>$599</td><td>VIN etching & recovery assistance</td></tr>
+        <tr><td><strong>Key Replacement</strong></td><td>$599</td><td>Covered if keys are lost or stolen</td></tr>
+        <tr><td><strong>Windshield Protection</strong></td><td>$299</td><td>Chip repair coverage</td></tr>
+        <tr><td><strong>Dent & Ding Coverage</strong></td><td>$499</td><td>Paintless dent repair included</td></tr>
+        <tr><td><strong>Appearance Package</strong></td><td>$1,299</td><td>Premium detail & protection products</td></tr>
+      </tbody>
+      <tfoot>
+        <tr style="background: var(--navy); color: white;">
+          <td colspan="2"><strong>Total Package Value</strong></td>
+          <td><strong style="font-size: 14pt;">$6,541+</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="script-box">
+      <div class="script-header">How to Present PPP</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Before we talk numbers, let me show you something. We include our Premium Protect Plus package on every vehicle—that's over $6,500 in protection. Things like paint protection film, nitrogen tires, interior protection... most dealers charge extra for these. We don't. It's already included."
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <span class="page-section">Building Value</span>
+    <span class="page-number">27</span>
+  </div>
+
+  <!-- ==================== WINDOW STICKERS ==================== -->
+  <div class="page">
+    <h1>Reading Window Stickers</h1>
+    <p>The window sticker (Monroney label) is your transparency tool. Walking customers through it builds trust, explains value, and shows you have nothing to hide.</p>
+
+    <h2>Key Sections of the Window Sticker</h2>
+    <table>
+      <thead><tr><th style="width: 25%;">Section</th><th>What It Shows</th><th>Talk Track</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Base MSRP</strong></td><td>Starting price before options</td><td>"This is the starting point for this trim level."</td></tr>
+        <tr><td><strong>Package Options</strong></td><td>Added packages (Premium, Tech)</td><td>"This has the XYZ package which adds..."</td></tr>
+        <tr><td><strong>Port Installed</strong></td><td>Accessories added at port</td><td>"These accessories were added before arrival."</td></tr>
+        <tr><td><strong>Destination</strong></td><td>Shipping from factory</td><td>"This covers shipping from Japan/Texas."</td></tr>
+        <tr><td><strong>Total MSRP</strong></td><td>All-in sticker price</td><td>"This is the total before any discounts."</td></tr>
+        <tr><td><strong>Fuel Economy</strong></td><td>EPA MPG estimates</td><td>"At 32 MPG combined, you'll save $X/month in gas."</td></tr>
+        <tr><td><strong>Safety Ratings</strong></td><td>NHTSA 5-star ratings</td><td>"This earned 5 stars—the highest possible."</td></tr>
+        <tr><td><strong>Standard Equipment</strong></td><td>Features included in price</td><td>"Everything here is included—competitors charge extra."</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 When to Use the Window Sticker</div>
+      <div class="tip-content">Review it during the walkaround, not at negotiation. This positions you as transparent from the start and builds trust before you ever talk numbers.</div>
+    </div>
+
+    <h2>Pro Tips for Window Sticker Presentations</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">1. Start Early</div>
+        <div class="key-action-desc">Review during walkaround, not negotiation. Positions you as transparent.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">2. Connect to Hot Buttons</div>
+        <div class="key-action-desc">If they mentioned fuel economy, point to EPA label. Safety? Highlight ratings.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">3. Use for Comparison</div>
+        <div class="key-action-desc">"When comparing online, make sure you're looking at same equipment level."</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">4. Address "Internet Price"</div>
+        <div class="key-action-desc">"Some ads show base prices without options. The sticker is the real number."</td>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Window Sticker Talk Track</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Let me walk you through exactly what makes up this price. I want you to see the value you're getting—no surprises, complete transparency. See here? This is the base MSRP, and these are the packages that are included. Everything listed under 'Standard Equipment' comes with the vehicle at no extra charge."
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <span class="page-section">Building Value</span>
+    <span class="page-number">28</span>
+  </div>
+
+  <!-- ==================== SKILLS DIVIDER ==================== -->
+  <div class="page">
+    <div class="section-divider">
+      <span class="section-divider-num">📞</span>
+      <h2 class="section-divider-title">Skills & Techniques</h2>
+      <p class="section-divider-subtitle">Phone Skills & Objection Handling</p>
+    </div>
+  </div>
+
+  <!-- ==================== PHONE SKILLS ==================== -->
+  <div class="page">
+    <h1>Phone Skills & Scripts</h1>
+    <p>The phone is often your first impression. Master these scripts to convert more calls into appointments.</p>
+
+    <h2>Phone-Up Best Practices</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">😊 Smile When You Answer</div>
+        <div class="key-action-desc">They can hear your attitude. A smile changes your tone.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📝 Take Notes</div>
+        <div class="key-action-desc">Write down their name, vehicle interest, and contact info immediately.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🎯 Goal: Appointment</div>
+        <div class="key-action-desc">Don't sell the car on the phone. Sell the appointment.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">❓ Ask, Don't Tell</div>
+        <div class="key-action-desc">Answer questions with questions to keep control of the call.</div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Inbound Phone-Up Script</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Thank you for calling Al Hendrickson Toyota, this is [Name]. How can I help you today?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "I'm calling about the Camry I saw online."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "The Camry is a great choice! I'd be happy to help. May I ask who I'm speaking with?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "This is John."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Great to meet you, John! What specifically about the Camry caught your eye?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[After discussion]</div>
+            "John, the best way to really appreciate the Camry is to see it in person and take it for a drive. I have availability this afternoon at 3 or tomorrow at 11—which works better for you?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box warning">
+      <div class="tip-title">⚠️ Don't Quote Price on the Phone</div>
+      <div class="tip-content">"I'd love to give you exact numbers, but there are so many factors—trade value, incentives, financing options. The best way is to come in so we can put together real numbers based on your situation. When works for you?"</div>
+    </div>
+    
+    <span class="page-section">Skills & Techniques</span>
+    <span class="page-number">30</span>
+  </div>
+
+  <!-- ==================== MORE PHONE SCRIPTS ==================== -->
+  <div class="page">
+    <h1>Follow-Up Phone Scripts</h1>
+
+    <div class="script-box">
+      <div class="script-header">Missed Appointment Script</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Hi [Name], this is [Your Name] from Al Hendrickson Toyota. I had you down for an appointment today and wanted to make sure everything is okay. I know life gets busy—did something come up?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[If they reschedule]</div>
+            "No problem at all. Let's get you back on the calendar. I have [time] or [time] available—which works better?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Unsold Traffic Follow-Up Script</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Hi [Name], this is [Your Name] from Al Hendrickson Toyota. I wanted to follow up on your visit yesterday. You were looking at the [vehicle]. Have you had any more thoughts about it?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Listen to response, then]</div>
+            "I understand. I wanted to let you know we just received some new incentives that might help with the numbers we discussed. Would you have time to come back in today or tomorrow to take another look?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">"Fire Phone" — Hot Lead Immediate Follow-Up</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Hi [Name], this is [Your Name] from Al Hendrickson Toyota. I just saw your inquiry come through on the [vehicle] and wanted to reach out right away. Great choice! That's one of our most popular models. I actually have it here on the lot—are you available to come see it today?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box success">
+      <div class="tip-title">✅ The 5-Minute Rule</div>
+      <div class="tip-content">Internet leads should be called within 5 minutes of submission. Response time is the #1 factor in lead conversion. If you can't call, at least send a text immediately.</div>
+    </div>
+    
+    <span class="page-section">Skills & Techniques</span>
+    <span class="page-number">31</span>
+  </div>
+
+  <!-- ==================== OBJECTION HANDLING ==================== -->
+  <div class="page">
+    <h1>Objection Handling</h1>
+    <p>Objections are buying signals—they mean the customer is engaged. Use the <strong>L.A.R.C. method</strong> for every objection: Listen, Acknowledge, Respond, Close.</p>
+
+    <h2>Common Objections & Responses</h2>
+
+    <div class="script-box">
+      <div class="script-header">"I Need to Think About It"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Acknowledge]</div>
+            "I completely understand—this is a big decision."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "What specifically would you like to think about? Is it the vehicle itself, or more about the numbers?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Close]</div>
+            "If we can address [their concern], would you be comfortable moving forward today?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">"I Need to Talk to My Spouse"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Acknowledge]</div>
+            "Absolutely—it's a family decision. I respect that."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "When you talk to them, what do you think their main concern will be?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Close]</div>
+            "Would it help if we called them together right now? Or can we schedule a time for them to come in and take a look?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">"Your Price is Too High"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Acknowledge]</div>
+            "I hear you—nobody wants to overpay."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "When you say too high, are you comparing to another dealer, or is it about the monthly payment? Let me show you the value you're getting—ToyotaCare, Toyoguard, TSS 3.0, Premium Protect Plus—that's over $6,500 included that most dealers charge extra for."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Close]</div>
+            "If we can work on [payment/down payment/term], would that help us earn your business today?"
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <span class="page-section">Skills & Techniques</span>
+    <span class="page-number">32</span>
+  </div>
+
+  <!-- ==================== MORE OBJECTIONS ==================== -->
+  <div class="page">
+    <h1>More Common Objections</h1>
+
+    <div class="script-box">
+      <div class="script-header">"I'm Just Looking"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "That's exactly what we're here for! What specifically are you looking for today?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">"I Can Get It Cheaper Somewhere Else"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "I appreciate you being upfront with me. Can you share that offer? I want to make sure we're comparing apples to apples—same equipment, same included programs. We include over $6,500 in protection that most dealers charge extra for."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">"I'm Upside Down on My Trade"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "That's more common than you'd think, and it doesn't have to stop us. Let's look at a few options—we might be able to restructure the deal, adjust the term, or find incentives that help offset the difference. What's most important to you—keeping the payment the same, or getting into the right vehicle?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">"I Want to Wait for Better Incentives"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "I understand wanting to get the best deal. Here's the thing—incentives change monthly and we never know what's coming. What I can tell you is that the current incentives are strong, and if you find the right vehicle today, we can lock them in. Waiting might mean losing this specific vehicle or these current offers."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 The "What Will It Take?" Close</div>
+      <div class="tip-content">"I want to earn your business today. What would it take to make that happen?" This gets them to tell you exactly what they need to move forward.</div>
+    </div>
+
+    <div class="tip-box success">
+      <div class="tip-title">✅ Remember: Objections = Interest</div>
+      <div class="tip-content">If they weren't interested, they'd just leave. Every objection is a chance to provide value and move closer to the sale. Stay positive and persistent.</div>
+    </div>
+    
+    <span class="page-section">Skills & Techniques</span>
+    <span class="page-number">33</span>
+  </div>
+
+  <!-- ==================== APPENDIX DIVIDER ==================== -->
+  <div class="page">
+    <div class="section-divider">
+      <span class="section-divider-num">📋</span>
+      <h2 class="section-divider-title">Appendices</h2>
+      <p class="section-divider-subtitle">Forms & Scripts Reference</p>
+    </div>
+  </div>
+
+  <!-- ==================== APPENDIX A: FORMS ==================== -->
+  <div class="page">
+    <h1>Appendix A: Forms Reference</h1>
+    <p>All forms are available digitally in the Training Portal under Resources → Forms Library. Below is a quick reference of available forms by category.</p>
+
+    <h2>Delivery Forms</h2>
+    <table>
+      <thead><tr><th>Form Name</th><th>Purpose</th><th>When to Use</th></tr></thead>
+      <tbody>
+        <tr><td>New Vehicle Purchase Checklist</td><td>Complete delivery checklist</td><td>Every new vehicle delivery</td></tr>
+        <tr><td>Used Vehicle Purchase Checklist</td><td>Complete delivery checklist</td><td>Every used vehicle delivery</td></tr>
+        <tr><td>We Owe / You Owe Agreement</td><td>Document outstanding obligations</td><td>When items are owed either way</td></tr>
+        <tr><td>Clean-Up Work Order</td><td>Service work for delivery prep</td><td>Detailing and prep requests</td></tr>
+        <tr><td>License Plate Information</td><td>Tag and registration info</td><td>Every delivery</td></tr>
+        <tr><td>Media Release Form</td><td>Photo/video authorization</td><td>Delivery photos for marketing</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Trade-In Forms</h2>
+    <table>
+      <thead><tr><th>Form Name</th><th>Purpose</th><th>When to Use</th></tr></thead>
+      <tbody>
+        <tr><td>Trade-In Payoff Authorization</td><td>Verify payoff with lender</td><td>All trades with liens</td></tr>
+        <tr><td>VIN Verification Form</td><td>Confirm vehicle identification</td><td>All trade appraisals</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Disclosure Forms</h2>
+    <table>
+      <thead><tr><th>Form Name</th><th>Purpose</th><th>When to Use</th></tr></thead>
+      <tbody>
+        <tr><td>Lemon Law Acknowledgment</td><td>Florida Lemon Law disclosure</td><td>All vehicle sales</td></tr>
+        <tr><td>Water Damage / Flood Warranties</td><td>Flood damage disclosure</td><td>Used vehicles as needed</td></tr>
+        <tr><td>FACTS Privacy Notice</td><td>Federal privacy disclosure</td><td>All financing deals</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Deal Documentation</h2>
+    <table>
+      <thead><tr><th>Form Name</th><th>Purpose</th><th>When to Use</th></tr></thead>
+      <tbody>
+        <tr><td>Street Purchase Cover Sheet</td><td>Cover sheet for street purchases</td><td>Non-dealer trades</td></tr>
+        <tr><td>Street Purchase Checklist</td><td>Required docs for street purchase</td><td>Non-dealer trades</td></tr>
+        <tr><td>Agreement to Provide Insurance</td><td>Customer insurance commitment</td><td>Before vehicle release</td></tr>
+        <tr><td>Premium Protect Plus Info Sheet</td><td>PPP benefits breakdown</td><td>Customer education</td></tr>
+      </tbody>
+    </table>
+    
+    <span class="page-section">Appendix A</span>
+    <span class="page-number">34</span>
+  </div>
+
+  <!-- ==================== APPENDIX B: SCRIPTS ==================== -->
+  <div class="page">
+    <h1>Appendix B: Scripts Reference</h1>
+    <p>All scripts are available digitally in the Training Portal under Resources → Scripts Library.</p>
+
+    <h2>Phone-Up Scripts</h2>
+    <table>
+      <thead><tr><th>Script Name</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Phone-Up Script Format</td><td>Complete inbound call flow and script structure</td></tr>
+        <tr><td>Phone-Up Best Practices</td><td>Tips for effective phone conversations</td></tr>
+        <tr><td>Phone-Up Key Points</td><td>Quick reference for phone calls</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Follow-Up Scripts</h2>
+    <table>
+      <thead><tr><th>Script Name</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Fire Phone Script</td><td>Urgent follow-up for hot internet leads</td></tr>
+        <tr><td>Dirty Thirty Call Script</td><td>30-day follow-up for orphan leads</td></tr>
+        <tr><td>Missed Appointment Script</td><td>No-show customer follow-up</td></tr>
+        <tr><td>Unsold Traffic Script</td><td>Be-back customer follow-up</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Quick Reference: The L.A.R.C. Method</h2>
+    <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin-top: 20px;">
+      <table style="margin: 0;">
+        <tbody>
+          <tr><td style="width: 80px; font-weight: bold; color: var(--ocean);">L — Listen</td><td>Let them finish completely. Don't interrupt.</td></tr>
+          <tr><td style="font-weight: bold; color: var(--ocean);">A — Acknowledge</td><td>"I completely understand how you feel..."</td></tr>
+          <tr><td style="font-weight: bold; color: var(--ocean);">R — Respond</td><td>Answer with value, not just price concessions.</td></tr>
+          <tr><td style="font-weight: bold; color: var(--ocean);">C — Close</td><td>"Does that address your concern? Are we ready?"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 style="margin-top: 30px;">Key Numbers to Remember</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">70/30 Rule</div>
+        <div class="key-action-desc">Customer talks 70%, you talk 30%</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">5-Minute Rule</div>
+        <div class="key-action-desc">Call internet leads within 5 minutes</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">$6,500+ Value</div>
+        <div class="key-action-desc">Premium Protect Plus included value</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">10 Steps</div>
+        <div class="key-action-desc">Road to Sale process steps</div></div>
+    </div>
+    
+    <span class="page-section">Appendix B</span>
+    <span class="page-number">36</span>
+  </div>
+
+  <!-- ==================== BACK COVER ==================== -->
+  <div class="page">
+    <div class="cover-page">
+      <img src="https://res.cloudinary.com/dgcdcqjrz/image/upload/v1767624172/TOCC_BUG_-_COLOR_cag4ud.png" alt="Toyota of Coconut Creek" class="cover-logo">
+      <h2 style="font-size: 24pt; color: var(--navy); margin-bottom: 20px;">Al Hendrickson Toyota<br>Coconut Creek</h2>
+      <p style="font-size: 12pt; color: #666; margin-bottom: 40px;">5201 W Sample Rd, Coconut Creek, FL 33073</p>
+      
+      <div style="max-width: 400px; text-align: center;">
+        <p style="font-size: 14pt; color: var(--coral); font-weight: 700; margin-bottom: 15px;">
+          "Success in sales comes down to one thing: helping people."
+        </p>
+        <p style="font-size: 10pt; color: #999;">
+          Master the process. Build relationships. Close deals.<br>
+          You've got this.
+        </p>
+      </div>
+      
+      <p class="cover-footer">© 2025 Al Hendrickson Toyota Coconut Creek. For Internal Training Use Only.</p>
+    </div>
+  </div>
+
+</body>
+</html>
+
+  <!-- ==================== WINDOW STICKERS ==================== -->
+  <div class="page">
+    <h1>Reading Window Stickers</h1>
+    <p>The window sticker (Monroney Label) is your transparency tool. Walking customers through it builds trust, explains value, and shows you have nothing to hide.</p>
+
+    <h2>MSRP & Pricing Breakdown</h2>
+    <table>
+      <thead><tr><th>Component</th><th>What It Means</th><th>Talk Track</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Base MSRP</strong></td><td>Starting price before options</td><td>"This is the starting point for this trim."</td></tr>
+        <tr><td><strong>Package Options</strong></td><td>Added packages (Premium, Tech)</td><td>"This has the XYZ package which adds..."</td></tr>
+        <tr><td><strong>Port Options</strong></td><td>Accessories added at port</td><td>"These accessories were added before arrival."</td></tr>
+        <tr><td><strong>Destination</strong></td><td>Shipping from factory</td><td>"This covers shipping from the factory."</td></tr>
+        <tr><td><strong>Total MSRP</strong></td><td>All-in sticker price</td><td>"This is the total before any discounts."</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Fuel Economy & EPA Label</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">City MPG</div>
+        <div class="key-action-desc">Stop-and-go urban driving conditions</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">Highway MPG</div>
+        <div class="key-action-desc">Steady highway speed driving</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">Combined MPG</div>
+        <div class="key-action-desc">55% city / 45% highway blend</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">Annual Fuel Cost</div>
+        <div class="key-action-desc">Estimated yearly fuel expense</div>
+      </div>
+    </div>
+
+    <h2>Safety Ratings (NHTSA)</h2>
+    <p>The National Highway Traffic Safety Administration rates vehicles on a 5-star scale. Toyota consistently earns top safety ratings across the lineup.</p>
+    <ul>
+      <li>⭐ Overall Safety Rating</li>
+      <li>⭐ Front Crash Test</li>
+      <li>⭐ Side Crash Test</li>
+      <li>⭐ Rollover Rating</li>
+    </ul>
+
+    <div class="tip-box success">
+      <div class="tip-title">💬 Pro Tip: Use It Early</div>
+      <div class="tip-content">Review the sticker during the walkaround, not at negotiation. It positions you as transparent from the start. "Let me walk you through exactly what makes up this price—no surprises."</div>
+    </div>
+
+    <div class="image-placeholder">
+      <div class="image-placeholder-text">📋 Sample Window Sticker</div>
+      <div class="image-placeholder-note">Insert annotated window sticker example</div>
+    </div>
+    
+    <span class="page-section">Building Value</span>
+    <span class="page-number">28</span>
+  </div>
+
+  <!-- ==================== SKILLS DIVIDER ==================== -->
+  <div class="page">
+    <div class="section-divider">
+      <span class="section-divider-num">📞</span>
+      <h2 class="section-divider-title">Skills & Techniques</h2>
+      <p class="section-divider-subtitle">Phone Skills & Objection Handling</p>
+    </div>
+  </div>
+
+  <!-- ==================== PHONE SKILLS ==================== -->
+  <div class="page">
+    <h1>Phone Skills & Scripts</h1>
+    <p>The phone is often your first impression. Master these skills and you'll set more appointments, show more cars, and sell more vehicles.</p>
+
+    <h2>Phone-Up Best Practices</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">📞 Answer Within 3 Rings</div>
+        <div class="key-action-desc">Every ring that goes unanswered is a potential lost customer.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">😊 Smile While You Talk</div>
+        <div class="key-action-desc">It changes your voice tone. Customers can hear a smile.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">📝 Get Their Info First</div>
+        <div class="key-action-desc">Name and phone before diving into vehicle questions.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🎯 Goal: Appointment</div>
+        <div class="key-action-desc">Don't sell the car on the phone. Sell the appointment.</div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">Standard Phone-Up Script</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Thank you for calling Al Hendrickson Toyota, this is [Name]. How can I help you today?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-customer">
+            <div class="script-customer-label">Customer:</div>
+            "I'm calling about the Camry I saw online..."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Excellent choice! Before I pull that up, may I get your name and a good callback number in case we get disconnected?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">You Say:</div>
+            "Great, [Name]. That Camry is beautiful and available. When would you like to come see it—this afternoon or tomorrow morning work better?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Follow-Up Call Scripts</h2>
+    <table>
+      <thead><tr><th>Situation</th><th>Script Opening</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Missed Appointment</strong></td><td>"Hi [Name], this is [You] from Al Hendrickson Toyota. I had you on my calendar today—is everything okay?"</td></tr>
+        <tr><td><strong>Unsold Traffic</strong></td><td>"Hi [Name], this is [You]. I wanted to follow up on your visit yesterday. Did you have any questions I can help with?"</td></tr>
+        <tr><td><strong>Fire Phone (Hot Lead)</strong></td><td>"Hi [Name], great news! That [vehicle] you were interested in is still available. When can you come back to finish up?"</td></tr>
+        <tr><td><strong>30-Day Follow-Up</strong></td><td>"Hi [Name], this is [You] from Al Hendrickson Toyota. Just checking in—how's everything going with your car search?"</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box warning">
+      <div class="tip-title">⚠️ Never Quote Price on the Phone</div>
+      <div class="tip-content">If asked about price, redirect: "I want to make sure you're getting the best deal. Let me pull that vehicle and we can go over everything when you're here. Does 2pm or 4pm work better?"</div>
+    </div>
+    
+    <span class="page-section">Skills & Techniques</span>
+    <span class="page-number">30</span>
+  </div>
+
+  <!-- ==================== OBJECTION HANDLING ==================== -->
+  <div class="page">
+    <h1>Objection Handling (L.A.R.C.)</h1>
+    <p>Objections are not rejections—they're requests for more information. Use the L.A.R.C. method to handle any objection professionally.</p>
+
+    <h2>The L.A.R.C. Method</h2>
+    <table>
+      <thead><tr><th style="width: 20%;">Step</th><th>What To Do</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>L — Listen</strong></td><td>Let them finish. Don't interrupt.</td><td>Nod, maintain eye contact, take notes.</td></tr>
+        <tr><td><strong>A — Acknowledge</strong></td><td>Validate their concern.</td><td>"I completely understand how you feel..."</td></tr>
+        <tr><td><strong>R — Respond</strong></td><td>Address with value or solution.</td><td>Provide information, build value, offer alternatives.</td></tr>
+        <tr><td><strong>C — Close</strong></td><td>Ask for next step.</td><td>"Does that address your concern? Ready to move forward?"</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Common Objections & Responses</h2>
+    
+    <div class="script-box">
+      <div class="script-header">"I need to think about it"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Acknowledge]</div>
+            "I completely understand—this is a big decision."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "What specifically would you like to think about? Is it the vehicle itself, or the numbers?"
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Close]</div>
+            "If we can address that concern, would you be ready to move forward today?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">"Your price is too high"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Acknowledge]</div>
+            "I understand—you want to make sure you're getting a fair deal."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "When you compare, make sure you're including what we offer: ToyotaCare, Toyoguard, TSS 3.0, Premium Protect Plus—that's over $6,500 in value included."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Close]</div>
+            "When you factor in that value, where does that put us?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-box">
+      <div class="script-header">"I need to talk to my spouse"</div>
+      <div class="script-body">
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Acknowledge]</div>
+            "Absolutely—it's a decision you should make together."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Respond]</div>
+            "What questions do you think they'll have? Maybe I can help you answer them now."
+          </div>
+        </div>
+        <div class="script-line">
+          <div class="script-sales">
+            <div class="script-sales-label">[Close]</div>
+            "When can we get them here so we can show them together? Tomorrow morning or afternoon?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 Practice Makes Perfect</div>
+      <div class="tip-content">Role-play these scenarios with a partner until the responses feel natural. The best salespeople practice objection handling daily.</div>
+    </div>
+    
+    <span class="page-section">Skills & Techniques</span>
+    <span class="page-number">32</span>
+  </div>
+
+  <!-- ==================== APPENDIX DIVIDER ==================== -->
+  <div class="page">
+    <div class="section-divider">
+      <span class="section-divider-num">📎</span>
+      <h2 class="section-divider-title">Appendices</h2>
+      <p class="section-divider-subtitle">Forms & Scripts Reference</p>
+    </div>
+  </div>
+
+  <!-- ==================== APPENDIX A: FORMS ==================== -->
+  <div class="page">
+    <h1>Appendix A: Forms Reference</h1>
+    <p>All forms are available digitally in the Sales Training Portal. Below is a quick reference guide organized by when you'll use them.</p>
+
+    <h2>Deal Documentation Forms</h2>
+    <table>
+      <thead><tr><th>Form Name</th><th>When Used</th><th>Step</th></tr></thead>
+      <tbody>
+        <tr><td>New Vehicle Purchase Checklist</td><td>Before delivery of new vehicles</td><td>10</td></tr>
+        <tr><td>Used Vehicle Purchase Checklist</td><td>Before delivery of used vehicles</td><td>10</td></tr>
+        <tr><td>Street Purchase Cover Sheet</td><td>Street purchase deals</td><td>8</td></tr>
+        <tr><td>Street Purchase Packet Checklist</td><td>Required docs for street purchase</td><td>8</td></tr>
+        <tr><td>We Owe / You Owe Agreement</td><td>Document outstanding obligations</td><td>10</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Trade-In Forms</h2>
+    <table>
+      <thead><tr><th>Form Name</th><th>When Used</th><th>Step</th></tr></thead>
+      <tbody>
+        <tr><td>Trade-In Payoff Authorization</td><td>Getting payoff from lender</td><td>7</td></tr>
+        <tr><td>VIN Verification Form</td><td>Confirming trade VIN</td><td>7</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Disclosure Forms</h2>
+    <table>
+      <thead><tr><th>Form Name</th><th>When Used</th><th>Step</th></tr></thead>
+      <tbody>
+        <tr><td>Lemon Law Acknowledgment</td><td>Florida Lemon Law disclosure</td><td>10</td></tr>
+        <tr><td>Water Damage & Flood Warranties</td><td>Used vehicle disclosure</td><td>10</td></tr>
+        <tr><td>FACTS Privacy Notice</td><td>Federal privacy requirements</td><td>8</td></tr>
+        <tr><td>Agreement to Provide Insurance</td><td>Insurance commitment</td><td>8</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Delivery Forms</h2>
+    <table>
+      <thead><tr><th>Form Name</th><th>When Used</th><th>Step</th></tr></thead>
+      <tbody>
+        <tr><td>Clean-Up Work Order</td><td>Service prep for delivery</td><td>10</td></tr>
+        <tr><td>License Plate Information</td><td>Tag/registration info</td><td>10</td></tr>
+        <tr><td>Media Release Form</td><td>Photo/video authorization</td><td>10</td></tr>
+        <tr><td>Premium Protect Plus Info Sheet</td><td>Customer-facing PPP benefits</td><td>10</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box tip">
+      <div class="tip-title">💡 Access Forms Online</div>
+      <div class="tip-content">All forms are available in the Sales Training Portal under Resources → Forms Library. They open in a modal for quick viewing and printing.</div>
+    </div>
+    
+    <span class="page-section">Appendix A</span>
+    <span class="page-number">34</span>
+  </div>
+
+  <!-- ==================== APPENDIX B: SCRIPTS ==================== -->
+  <div class="page">
+    <h1>Appendix B: Scripts Reference</h1>
+    <p>All scripts are available digitally in the Sales Training Portal. Use this as a quick reference for which script to use in different situations.</p>
+
+    <h2>Phone-Up Scripts</h2>
+    <table>
+      <thead><tr><th>Script Name</th><th>Use Case</th></tr></thead>
+      <tbody>
+        <tr><td>Phone-Up Format</td><td>Complete phone-up call flow</td></tr>
+        <tr><td>Phone-Up Best Practices</td><td>Tips for effective phone conversations</td></tr>
+        <tr><td>Phone-Up Key Points</td><td>Quick reference for phone calls</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Follow-Up Scripts</h2>
+    <table>
+      <thead><tr><th>Script Name</th><th>Use Case</th></tr></thead>
+      <tbody>
+        <tr><td>Fire Phone Script</td><td>Urgent follow-up for hot leads</td></tr>
+        <tr><td>Dirty Thirty Call Script</td><td>30-day follow-up calls</td></tr>
+        <tr><td>Missed Appointment Script</td><td>Customers who no-showed</td></tr>
+        <tr><td>Unsold Traffic Script</td><td>Follow-up for customers who left without buying</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Script Mastery Tips</h2>
+    <div class="key-actions">
+      <div class="key-action">
+        <div class="key-action-title">🗣️ Practice Out Loud</div>
+        <div class="key-action-desc">Reading silently isn't enough. Say the words until they feel natural.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">✨ Personalize It</div>
+        <div class="key-action-desc">These are frameworks. Make them yours by adding your personality.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🎭 Role Play</div>
+        <div class="key-action-desc">Partner with a colleague and practice different scenarios.</div>
+      </div>
+      <div class="key-action">
+        <div class="key-action-title">🔄 Review Daily</div>
+        <div class="key-action-desc">Spend 5 minutes each morning reviewing your scripts.</div>
+      </div>
+    </div>
+
+    <div class="tip-box success">
+      <div class="tip-title">✅ Access Scripts Online</div>
+      <div class="tip-content">All scripts are available in the Sales Training Portal under Resources → Scripts Library. Practice with the Flashcard system under Skills → Flashcard Practice.</div>
+    </div>
+    
+    <span class="page-section">Appendix B</span>
+    <span class="page-number">36</span>
+  </div>
+
+  <!-- ==================== BACK COVER ==================== -->
+  <div class="page">
+    <div class="cover-page" style="justify-content: space-between; padding: 60px 0;">
+      <div></div>
+      <div>
+        <img src="https://res.cloudinary.com/dgcdcqjrz/image/upload/v1767624172/TOCC_BUG_-_COLOR_cag4ud.png" alt="Toyota of Coconut Creek" style="width: 120px; margin-bottom: 30px;">
+        <h2 style="font-size: 24pt; font-weight: 800; color: var(--navy); margin-bottom: 10px;">Al Hendrickson Toyota</h2>
+        <p style="font-size: 14pt; color: var(--coral); font-weight: 600; margin-bottom: 30px;">Coconut Creek</p>
+        <p style="font-size: 11pt; color: #666; margin-bottom: 5px;">5201 W Sample Rd</p>
+        <p style="font-size: 11pt; color: #666; margin-bottom: 20px;">Coconut Creek, FL 33073</p>
+        <p style="font-size: 10pt; color: #999;">Questions? Contact your Sales Manager</p>
+      </div>
+      <div style="text-align: center;">
+        <p style="font-size: 9pt; color: #ccc;">© 2025 Al Hendrickson Toyota Coconut Creek</p>
+        <p style="font-size: 8pt; color: #ddd; margin-top: 5px;">Confidential Training Materials — For Internal Use Only</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
