@@ -6,6 +6,10 @@ export interface StepData {
   icon: string
   keyMetric?: string
   overview: string
+  needsAssessmentQuestions?: {
+    question: string
+    purpose: string
+  }[]
   keyActions: {
     title: string
     description: string
@@ -139,6 +143,23 @@ A proper Meet & Greet isn't about jumping into a sales pitch—it's about creati
     overview: `The Qualify step is where you become a consultant, not a salesperson. Your job is to understand everything about their situation: what they need, what they want, who\'s involved in the decision, when they\'re looking to buy, and what their budget looks like.
 
 The information you gather here will be gold throughout the rest of the process. Take notes—it shows you care and helps you remember important details.`,
+    needsAssessmentQuestions: [
+      { question: 'What are you currently driving?', purpose: 'Understand their baseline and potential trade-in' },
+      { question: 'What do you like most about your current vehicle?', purpose: 'Identify must-have features' },
+      { question: 'What would you change about your current vehicle?', purpose: 'Find pain points to solve' },
+      { question: 'What will this vehicle primarily be used for?', purpose: 'Commute, family, work, recreation' },
+      { question: 'How many miles do you drive per week/year?', purpose: 'Fuel economy importance' },
+      { question: 'Who else will be driving this vehicle?', purpose: 'Multiple driver considerations' },
+      { question: 'Do you have children? Car seats?', purpose: 'Safety and space needs' },
+      { question: 'What features are most important to you?', purpose: 'Technology, safety, comfort priorities' },
+      { question: 'Is there anyone else involved in this decision?', purpose: 'Identify all decision makers' },
+      { question: 'When do you need to make a decision by?', purpose: 'Timeline and urgency' },
+      { question: 'Are you looking to buy or lease?', purpose: 'Ownership preference' },
+      { question: 'Do you have a monthly payment in mind?', purpose: 'Budget range' },
+      { question: 'Will you be trading in your current vehicle?', purpose: 'Trade-in equity situation' },
+      { question: 'How did you hear about us?', purpose: 'Marketing attribution' },
+      { question: 'Have you looked at any other vehicles or dealerships?', purpose: 'Competition awareness' },
+    ],
     keyActions: [
       {
         title: 'Ask Open-Ended Questions',

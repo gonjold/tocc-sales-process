@@ -163,6 +163,32 @@ export function StepContent({ step, prevStep, nextStep }: StepContentProps) {
           </div>
         </div>
 
+        {/* Needs Assessment Questions - Only for Step 2 */}
+        {step.needsAssessmentQuestions && step.needsAssessmentQuestions.length > 0 && (
+          <section className="bg-white rounded-xl border border-gray-200 p-6">
+            <h2 className="text-lg font-display font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                <span className="text-purple-600 font-bold">15</span>
+              </div>
+              Needs Assessment Questions
+            </h2>
+            <p className="text-sm text-gray-600 mb-4">Use these questions to fully understand your customer's situation. You don't need to ask all 15—let the conversation flow naturally.</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {step.needsAssessmentQuestions.map((q, idx) => (
+                <div key={idx} className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors">
+                  <div className="flex items-start gap-2 mb-2">
+                    <span className="w-6 h-6 bg-purple-600 text-white text-xs font-bold rounded-full flex items-center justify-center flex-shrink-0">
+                      {idx + 1}
+                    </span>
+                    <p className="text-gray-900 font-medium text-sm leading-tight">"{q.question}"</p>
+                  </div>
+                  <p className="text-xs text-gray-500 ml-8">{q.purpose}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Key Actions Grid */}
         <section>
           <h2 className="text-lg font-display font-bold text-gray-900 mb-4 flex items-center gap-2">
