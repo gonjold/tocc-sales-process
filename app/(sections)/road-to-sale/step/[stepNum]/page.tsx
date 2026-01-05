@@ -1,5 +1,5 @@
 import { stepsData, getStep } from '@/data/steps'
-import { StepPageContent } from './StepPageContent'
+import { StepContent } from '@/components/StepContentClient'
 import { notFound } from 'next/navigation'
 
 interface Props {
@@ -18,7 +18,7 @@ export default function StepPage({ params }: Props) {
   const nextStep = stepNum < 10 ? getStep(stepNum + 1) : null
 
   return (
-    <StepPageContent 
+    <StepContent 
       step={step} 
       prevStep={prevStep ? { stepNum: prevStep.stepNum, title: prevStep.title } : null}
       nextStep={nextStep ? { stepNum: nextStep.stepNum, title: nextStep.title } : null}

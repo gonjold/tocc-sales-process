@@ -63,8 +63,8 @@ export default function WindowStickerPage() {
   }
 
   const openSample = () => {
-    const url = getDocumentUrl('toyota-products/2025_Camry_Window_Sticker.pdf')
-    openModal('Sample Window Sticker - 2025 Camry', url, 'pdf')
+    // Note: Sample window sticker PDF needs to be uploaded to Firebase
+    alert('Sample window sticker coming soon! Upload a Camry window sticker PDF to Firebase at toyota-products/2025_Camry_Window_Sticker.pdf')
   }
 
   return (
