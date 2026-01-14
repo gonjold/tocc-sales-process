@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { Phone, ChevronDown, Lightbulb, AlertTriangle, Flame, PhoneMissed, Clock, Smile, FileText, Target } from 'lucide-react'
+import { Phone, ChevronDown, ChevronRight, Lightbulb, AlertTriangle, Flame, PhoneMissed, Clock, Smile, FileText, Target } from 'lucide-react'
 import { DocumentModal, useDocumentModal } from '@/components/ui/DocumentModal'
 import { getDocumentUrl } from '@/data/documents'
+import Link from 'next/link'
 
 const scripts = [
   {
@@ -177,6 +178,20 @@ export default function PhoneSkillsPage() {
           <h5>Practice Makes Perfect</h5>
           <p>Role-play these scripts with a colleague until they feel natural. The best phone salespeople practice daily.</p>
         </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
+        <Link href="/window-sticker" className="text-gray-600 hover:text-gray-900">
+          ← Back to Window Sticker Guide
+        </Link>
+        <Link 
+          href="/skills/objections"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Objection Handling
+          <ChevronRight size={20} />
+        </Link>
       </div>
 
       {/* Document Modal */}

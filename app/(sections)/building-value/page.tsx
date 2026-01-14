@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { DocumentModal, useDocumentModal } from '@/components/ui/DocumentModal'
 import { getDocumentUrl } from '@/data/documents'
+import Link from 'next/link'
 
 const programs = [
   {
@@ -371,6 +372,20 @@ export default function BuildingValuePage() {
             <li><strong>Hybrid:</strong> "10 years / 150,000 miles hybrid battery warranty is industry-leading. Most competitors offer far less."</li>
           </ul>
         </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
+        <Link href="/follow-up" className="text-gray-600 hover:text-gray-900">
+          ← Back to Follow-Up & Referrals
+        </Link>
+        <Link 
+          href="/ppp"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Premium Protect Plus
+          <ChevronRight size={20} />
+        </Link>
       </div>
     </div>
   )

@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { MessageCircle, ChevronDown, Lightbulb, Target, TrendingUp, AlertTriangle } from 'lucide-react'
+import { MessageCircle, ChevronDown, ChevronRight, Lightbulb, Target, TrendingUp, AlertTriangle } from 'lucide-react'
+import Link from 'next/link'
 
 const larcMethod = [
   { letter: 'L', word: 'Listen', desc: 'Hear the complete objection without interrupting. Let them express their full concern.' },
@@ -298,6 +299,20 @@ export default function ObjectionsPage() {
             <p className="text-sm text-green-800">Note which objections you hear most often. Focus practice on those.</p>
           </div>
         </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
+        <Link href="/skills/phone" className="text-gray-600 hover:text-gray-900">
+          ← Back to Phone Skills
+        </Link>
+        <Link 
+          href="/skills/flashcards"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Flashcards
+          <ChevronRight size={20} />
+        </Link>
       </div>
     </div>
   )

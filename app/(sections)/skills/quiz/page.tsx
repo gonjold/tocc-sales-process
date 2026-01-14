@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import { Brain, CheckCircle2, XCircle, RotateCcw, Trophy, ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 
 interface QuizQuestion {
   id: number
@@ -399,6 +400,20 @@ export default function QuizPage() {
           </button>
         </div>
       )}
+
+      {/* Page Navigation */}
+      <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
+        <Link href="/skills/flashcards" className="text-gray-600 hover:text-gray-900">
+          ← Back to Flashcards
+        </Link>
+        <Link 
+          href="/resources/forms"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Forms Library
+          <ChevronRight size={20} />
+        </Link>
+      </div>
     </div>
   )
 }

@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { FileSpreadsheet, ChevronDown, Lightbulb, DollarSign, Fuel, Shield, Star } from 'lucide-react'
+import { FileSpreadsheet, ChevronDown, ChevronRight, Lightbulb, DollarSign, Fuel, Shield, Star } from 'lucide-react'
 import { DocumentModal, useDocumentModal } from '@/components/ui/DocumentModal'
 import { getDocumentUrl } from '@/data/documents'
+import Link from 'next/link'
 
 const sections = [
   {
@@ -137,6 +138,20 @@ export default function WindowStickerPage() {
           <h5>Use It Early</h5>
           <p>Review the sticker during the walkaround, not at negotiation. It positions you as transparent from the start. "Let me walk you through exactly what makes up this price—no surprises."</p>
         </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
+        <Link href="/ppp" className="text-gray-600 hover:text-gray-900">
+          ← Back to Premium Protect Plus
+        </Link>
+        <Link 
+          href="/skills/phone"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Phone Skills
+          <ChevronRight size={20} />
+        </Link>
       </div>
 
       {/* Document Modal */}

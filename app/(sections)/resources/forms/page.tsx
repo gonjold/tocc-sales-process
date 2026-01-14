@@ -1,11 +1,21 @@
 'use client'
 
 import { useState } from 'react'
-import { FileText, Search, Filter } from 'lucide-react'
+import { FileText, Search, ChevronRight } from 'lucide-react'
 import { forms, getDocumentUrl } from '@/data/documents'
 import { DocumentModal, useDocumentModal } from '@/components/ui/DocumentModal'
+import Link from 'next/link'
 
 const categories = ['All', 'Delivery', 'Trade-In', 'Disclosures', 'Deal Docs', 'Training']
+
+// Map filter categories to tags
+const categoryTagMap: Record<string, string[]> = {
+  'Delivery': ['delivery', 'checklist'],
+  'Trade-In': ['trade', 'payoff', 'street purchase'],
+  'Disclosures': ['disclosure', 'lemon law', 'insurance'],
+  'Deal Docs': ['deal', 'agreement', 'authorization', 'cover sheet', 'verification'],
+  'Training': ['training', 'guide', 'reference'],
+}
 
 export default function FormsLibraryPage() {
   const { isOpen, currentDoc, openModal, closeModal } = useDocumentModal()
@@ -15,7 +25,18 @@ export default function FormsLibraryPage() {
   const filteredForms = forms.filter(form => {
     const matchesSearch = form.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          form.description.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === 'All' || form.category === selectedCategory
+    
+    if (selectedCategory === 'All') {
+      return matchesSearch
+    }
+    
+    // Check if any of the form's tags match the category's mapped tags
+    const categoryTags = categoryTagMap[selectedCategory] || []
+    const formTags = form.tags || []
+    const matchesCategory = categoryTags.some(catTag => 
+      formTags.some(formTag => formTag.toLowerCase().includes(catTag.toLowerCase()))
+    )
+    
     return matchesSearch && matchesCategory
   })
 
@@ -98,6 +119,20 @@ export default function FormsLibraryPage() {
           No forms found matching your criteria
         </div>
       )}
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
+        <Link href="/skills/quiz" className="text-gray-600 hover:text-gray-900">
+          ← Back to Knowledge Quiz
+        </Link>
+        <Link 
+          href="/resources/scripts"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Sales Scripts
+          <ChevronRight size={20} />
+        </Link>
+      </div>
 
       {/* Document Modal */}
       <DocumentModal

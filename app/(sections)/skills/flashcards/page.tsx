@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Layers, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 
 const flashcards = [
   { category: 'ToyotaCare', question: 'What is included with ToyotaCare?', answer: '2 years/25,000 miles of no-cost maintenance including oil changes, tire rotations, multi-point inspections, plus 24/7 roadside assistance.' },
@@ -158,6 +159,20 @@ export default function FlashcardsPage() {
           Next
           <ChevronRight size={18} />
         </button>
+      </div>
+
+      {/* Page Navigation */}
+      <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
+        <Link href="/skills/objections" className="text-gray-600 hover:text-gray-900">
+          ← Back to Objection Handling
+        </Link>
+        <Link 
+          href="/skills/quiz"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Knowledge Quiz
+          <ChevronRight size={20} />
+        </Link>
       </div>
     </div>
   )

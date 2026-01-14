@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { Scroll, Search, Phone, Flame, PhoneMissed, Clock, FileText, Users, ChevronDown, ChevronUp, User, Mic, Download, ExternalLink } from 'lucide-react'
+import { Scroll, Search, Phone, Flame, PhoneMissed, Clock, FileText, Users, ChevronDown, ChevronUp, ChevronRight, User, Mic, Download, ExternalLink } from 'lucide-react'
 import { scripts as firebaseScripts, getDocumentUrl } from '@/data/documents'
 import { DocumentModal, useDocumentModal } from '@/components/ui/DocumentModal'
 import { phoneScripts } from '@/data/additional-content'
+import Link from 'next/link'
 
 const inlineScripts = [
   { 
@@ -279,6 +280,20 @@ export default function ScriptsLibraryPage() {
             <p className="text-xs text-gray-500">Partner with a colleague to practice scenarios.</p>
           </div>
         </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
+        <Link href="/resources/forms" className="text-gray-600 hover:text-gray-900">
+          ← Back to Forms Library
+        </Link>
+        <Link 
+          href="/glossary"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Glossary
+          <ChevronRight size={20} />
+        </Link>
       </div>
 
       {/* Document Modal */}
