@@ -156,9 +156,11 @@ export function Sidebar() {
     setMobileOpen(false)
   }, [pathname])
 
-  // Exact match for active state
+  // Exact match for active state (handle trailing slashes)
   const isActive = (href: string) => {
-    return pathname === href
+    const cleanPathname = pathname.replace(/\/$/, '') || '/'
+    const cleanHref = href.replace(/\/$/, '') || '/'
+    return cleanPathname === cleanHref
   }
 
   const isSectionActive = (section: NavSection) => {
@@ -200,17 +202,17 @@ export function Sidebar() {
         lg:translate-x-0
       `}>
         {/* Header */}
-        <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between">
+        <div className="p-4 pl-5 border-b border-white/10 flex items-center justify-between">
           <Link href="/" onClick={handleNavClick} className={`flex items-center gap-3 ${collapsed ? 'justify-center' : ''}`}>
             <img 
               src="https://firebasestorage.googleapis.com/v0/b/ahtocc-sales-training.firebasestorage.app/o/images%2Flogos%2FTOCC%20Palm%20BUG%20-%20color.png?alt=media" 
               alt="TOCC"
-              className="h-9 w-9 flex-shrink-0"
+              className="h-8 w-8 flex-shrink-0"
             />
             {!collapsed && (
               <div className="flex flex-col min-w-0">
-                <span className="text-[11px] font-bold uppercase tracking-wide leading-tight truncate">Toyota of Coconut Creek</span>
-                <span className="text-[9px] text-gray-500 uppercase tracking-wider">Sales Training</span>
+                <span className="text-[10px] font-bold uppercase tracking-wide leading-tight">Toyota of Coconut Creek</span>
+                <span className="text-[8px] text-gray-500 uppercase tracking-wider">Sales Training</span>
               </div>
             )}
           </Link>
