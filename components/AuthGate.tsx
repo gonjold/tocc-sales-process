@@ -8,6 +8,7 @@ import { Lock, Eye, EyeOff, AlertCircle } from 'lucide-react'
 // Default password (can be overridden in Admin panel)
 // ============================================
 const DEFAULT_SITE_PASSWORD = 'tocc2026'
+const SESSION_TIMEOUT_HOURS = 24 // Session expires after 24 hours
 // ============================================
 
 // Get the current password (checks localStorage first for admin override)
@@ -17,6 +18,20 @@ const getSitePassword = (): string => {
     if (customPassword) return customPassword
   }
   return DEFAULT_SITE_PASSWORD
+}
+
+// Check if session is still valid (within timeout period)
+const isSessionValid = (): boolean => {
+  if (typeof window === 'undefined') return false
+  
+  const authTime = sessionStorage.getItem('tocc-auth-time')
+  if (!authTime) return false
+  
+  const loginTime = parseInt(authTime, 10)
+  const now = Date.now()
+  const hoursSinceLogin = (now - loginTime) / (1000 * 60 * 60)
+  
+  return hoursSinceLogin < SESSION_TIMEOUT_HOURS
 }
 
 interface AuthGateProps {
@@ -33,9 +48,12 @@ export function AuthGate({ children }: AuthGateProps) {
   // Check for existing session on mount
   useEffect(() => {
     const session = sessionStorage.getItem('tocc-auth')
-    if (session === 'authenticated') {
+    if (session === 'authenticated' && isSessionValid()) {
       setIsAuthenticated(true)
     } else {
+      // Clear expired session
+      sessionStorage.removeItem('tocc-auth')
+      sessionStorage.removeItem('tocc-auth-time')
       setIsAuthenticated(false)
     }
     setIsLoading(false)
@@ -45,6 +63,7 @@ export function AuthGate({ children }: AuthGateProps) {
     e.preventDefault()
     if (password === getSitePassword()) {
       sessionStorage.setItem('tocc-auth', 'authenticated')
+      sessionStorage.setItem('tocc-auth-time', Date.now().toString())
       setIsAuthenticated(true)
       setError(false)
     } else {

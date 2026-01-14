@@ -25,7 +25,6 @@ import {
   X,
   LogOut,
   ChevronDown,
-  ChevronRight,
   PanelLeftClose,
   PanelLeft
 } from 'lucide-react'
@@ -40,15 +39,15 @@ interface NavItem {
 interface NavSection {
   title: string
   id: string
+  icon: React.ElementType
   items: NavItem[]
-  defaultOpen?: boolean
 }
 
 const navigation: NavSection[] = [
   {
     title: 'Start',
     id: 'start',
-    defaultOpen: true,
+    icon: Home,
     items: [
       { name: 'Welcome', href: '/', icon: Home },
       { name: 'Glossary', href: '/glossary', icon: BookOpen },
@@ -57,7 +56,7 @@ const navigation: NavSection[] = [
   {
     title: 'Road to the Sale',
     id: 'road-to-sale',
-    defaultOpen: true,
+    icon: Map,
     items: [
       { name: 'Overview', href: '/road-to-sale', icon: Map },
       { name: 'Meet & Greet', href: '/road-to-sale/step/1', stepNum: 1 },
@@ -76,7 +75,7 @@ const navigation: NavSection[] = [
   {
     title: 'After the Sale',
     id: 'after-sale',
-    defaultOpen: true,
+    icon: Star,
     items: [
       { name: 'CSI & Reviews', href: '/csi', icon: Star },
       { name: 'Follow-Up & Referrals', href: '/follow-up', icon: Users },
@@ -85,7 +84,7 @@ const navigation: NavSection[] = [
   {
     title: 'Building Value',
     id: 'building-value',
-    defaultOpen: true,
+    icon: Award,
     items: [
       { name: 'Toyota Programs', href: '/building-value', icon: Award },
       { name: 'Premium Protect Plus', href: '/ppp', icon: Shield },
@@ -96,7 +95,7 @@ const navigation: NavSection[] = [
   {
     title: 'Skills & Practice',
     id: 'skills',
-    defaultOpen: true,
+    icon: Brain,
     items: [
       { name: 'Phone Skills', href: '/skills/phone', icon: Phone },
       { name: 'Objection Handling', href: '/skills/objections', icon: MessageCircle },
@@ -107,7 +106,7 @@ const navigation: NavSection[] = [
   {
     title: 'Resources',
     id: 'resources',
-    defaultOpen: true,
+    icon: FileText,
     items: [
       { name: 'Forms Library', href: '/resources/forms', icon: FileText },
       { name: 'Scripts Library', href: '/resources/scripts', icon: Scroll },
@@ -115,20 +114,43 @@ const navigation: NavSection[] = [
   },
 ]
 
+// Find which section contains a path
+const findSectionForPath = (pathname: string): string | null => {
+  for (const section of navigation) {
+    for (const item of section.items) {
+      if (item.href === pathname || (item.href !== '/' && pathname.startsWith(item.href))) {
+        return section.id
+      }
+    }
+  }
+  // Default to 'start' for home page
+  if (pathname === '/') return 'start'
+  return null
+}
+
 export function Sidebar() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({})
 
-  // Initialize open sections
+  // Initialize - only expand section containing current page
   useEffect(() => {
+    const activeSection = findSectionForPath(pathname)
     const initial: Record<string, boolean> = {}
     navigation.forEach(section => {
-      initial[section.id] = section.defaultOpen ?? true
+      initial[section.id] = section.id === activeSection
     })
     setOpenSections(initial)
-  }, [])
+  }, []) // Only on mount
+
+  // Auto-expand section when navigating to a new page
+  useEffect(() => {
+    const activeSection = findSectionForPath(pathname)
+    if (activeSection && !openSections[activeSection]) {
+      setOpenSections(prev => ({ ...prev, [activeSection]: true }))
+    }
+  }, [pathname])
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -146,7 +168,11 @@ export function Sidebar() {
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/'
-    return pathname.startsWith(href)
+    return pathname === href || pathname.startsWith(href + '/')
+  }
+
+  const isSectionActive = (section: NavSection) => {
+    return section.items.some(item => isActive(item.href))
   }
 
   const toggleSection = (id: string) => {
@@ -155,6 +181,7 @@ export function Sidebar() {
 
   const handleLogout = () => {
     sessionStorage.removeItem('tocc-auth')
+    sessionStorage.removeItem('tocc-auth-time')
     window.location.reload()
   }
 
@@ -178,7 +205,7 @@ export function Sidebar() {
         bg-gradient-to-b from-gray-900 via-gray-900 to-black
         text-white flex flex-col
         transition-all duration-300 ease-in-out
-        ${collapsed ? 'w-16' : 'w-72'}
+        ${collapsed ? 'w-16' : 'w-64'}
         ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0
       `}>
@@ -192,7 +219,7 @@ export function Sidebar() {
             />
             {!collapsed && (
               <div className="flex flex-col">
-                <span className="text-xs font-bold uppercase tracking-wide">Toyota of Coconut Creek</span>
+                <span className="text-xs font-bold uppercase tracking-wide leading-tight">Toyota of Coconut Creek</span>
                 <span className="text-[10px] text-gray-400 uppercase tracking-wider">Sales Training</span>
               </div>
             )}
@@ -208,54 +235,65 @@ export function Sidebar() {
         </div>
 
         {/* Navigation */}
-        <div className="flex-1 overflow-y-auto py-2">
+        <div className="flex-1 overflow-y-auto py-3">
           {navigation.map((section) => (
             <div key={section.id} className="mb-1">
-              {/* Section Header - Clickable to collapse */}
-              {!collapsed && (
-                <button
-                  onClick={() => toggleSection(section.id)}
-                  className="w-full px-4 py-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-gray-500 hover:text-gray-300 transition-colors"
-                >
-                  <span>{section.title}</span>
-                  {openSections[section.id] ? (
-                    <ChevronDown size={12} />
-                  ) : (
-                    <ChevronRight size={12} />
+              {/* Section Header - Clickable to expand/collapse */}
+              <button
+                onClick={() => !collapsed && toggleSection(section.id)}
+                className={`
+                  w-full flex items-center gap-3 px-4 py-2.5
+                  transition-all duration-150
+                  ${collapsed ? 'justify-center' : 'justify-between'}
+                  ${isSectionActive(section) 
+                    ? 'text-white bg-white/5' 
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  }
+                `}
+                title={collapsed ? section.title : undefined}
+              >
+                <div className="flex items-center gap-3">
+                  <section.icon size={18} className={isSectionActive(section) ? 'text-red-500' : ''} />
+                  {!collapsed && (
+                    <span className="font-semibold text-sm">{section.title}</span>
                   )}
-                </button>
-              )}
+                </div>
+                {!collapsed && (
+                  <ChevronDown 
+                    size={16} 
+                    className={`transition-transform duration-200 ${openSections[section.id] ? 'rotate-180' : ''}`}
+                  />
+                )}
+              </button>
               
               {/* Section Items */}
-              {(collapsed || openSections[section.id]) && (
-                <div className={collapsed ? 'py-1' : ''}>
+              {!collapsed && openSections[section.id] && (
+                <div className="mt-1 ml-4 pl-4 border-l border-white/10">
                   {section.items.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={handleNavClick}
                       className={`
-                        flex items-center gap-3 mx-2 px-3 py-2 rounded-lg
+                        flex items-center gap-2.5 px-3 py-2 rounded-md text-[13px]
                         transition-all duration-150
                         ${isActive(item.href) 
-                          ? 'bg-red-600 text-white' 
+                          ? 'bg-red-600 text-white font-medium' 
                           : 'text-gray-400 hover:bg-white/5 hover:text-white'
                         }
-                        ${collapsed ? 'justify-center px-2' : ''}
                       `}
-                      title={collapsed ? item.name : undefined}
                     >
                       {item.stepNum ? (
                         <span className={`
-                          flex items-center justify-center w-6 h-6 text-xs font-bold rounded
-                          ${isActive(item.href) ? 'bg-white/20' : 'bg-gray-700'}
+                          flex items-center justify-center w-5 h-5 text-[10px] font-bold rounded
+                          ${isActive(item.href) ? 'bg-white/20' : 'bg-white/10'}
                         `}>
                           {item.stepNum}
                         </span>
                       ) : item.icon ? (
-                        <item.icon size={18} className="flex-shrink-0" />
+                        <item.icon size={14} className="opacity-70" />
                       ) : null}
-                      {!collapsed && <span className="text-sm">{item.name}</span>}
+                      <span>{item.name}</span>
                     </Link>
                   ))}
                 </div>
@@ -289,7 +327,7 @@ export function Sidebar() {
               onClick={handleNavClick}
               className={`
                 flex items-center justify-center gap-2 py-2 
-                bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white
+                bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white
                 text-sm rounded-lg transition-colors
                 ${collapsed ? 'w-full px-2' : 'flex-1 px-3'}
               `}
@@ -302,7 +340,7 @@ export function Sidebar() {
               onClick={handleLogout}
               className={`
                 flex items-center justify-center py-2 
-                bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white
+                bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white
                 rounded-lg transition-colors
                 ${collapsed ? 'w-full px-2' : 'px-3'}
               `}
@@ -318,7 +356,7 @@ export function Sidebar() {
             className="hidden lg:flex items-center justify-center gap-2 w-full py-2 text-gray-500 hover:text-gray-300 text-xs transition-colors"
           >
             {collapsed ? <PanelLeft size={16} /> : <PanelLeftClose size={16} />}
-            {!collapsed && <span>Collapse Menu</span>}
+            {!collapsed && <span>Collapse</span>}
           </button>
         </div>
       </nav>
@@ -327,14 +365,13 @@ export function Sidebar() {
       <MobileMenuButton onClick={() => setMobileOpen(true)} />
       
       {/* Spacer for main content */}
-      <div className={`hidden lg:block flex-shrink-0 transition-all duration-300 ${collapsed ? 'w-16' : 'w-72'}`} />
+      <div className={`hidden lg:block flex-shrink-0 transition-all duration-300 ${collapsed ? 'w-16' : 'w-64'}`} />
     </>
   )
 }
 
 // Separate component for mobile menu button that Header can trigger
 function MobileMenuButton({ onClick }: { onClick: () => void }) {
-  // This component exposes a click handler via a global function
   useEffect(() => {
     (window as any).openMobileMenu = onClick
   }, [onClick])
