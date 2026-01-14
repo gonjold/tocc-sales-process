@@ -13,11 +13,94 @@ import {
   AlertOctagon,
   FileText,
   Check,
-  Play
+  Play,
+  Eye,
+  Smile,
+  Handshake,
+  Search,
+  Car,
+  ClipboardList,
+  Route,
+  DollarSign,
+  Calculator,
+  MessageCircle,
+  Clipboard,
+  Award,
+  Star,
+  Users,
+  Phone,
+  Gift,
+  Sparkles,
+  Heart,
+  ThumbsUp,
+  CheckCircle,
+  UserCheck,
+  Wallet,
+  FileCheck,
+  Truck,
+  Key,
+  Camera,
+  Shield,
+  type LucideIcon
 } from 'lucide-react'
 import { StepData } from '@/data/steps'
 import { forms, getDocumentUrl } from '@/data/documents'
 import { DocumentModal, useDocumentModal } from '@/components/ui/DocumentModal'
+
+// Map icon string names to Lucide components
+const iconMap: Record<string, LucideIcon> = {
+  Eye,
+  Smile,
+  Handshake,
+  FileText,
+  Search,
+  Car,
+  ClipboardList,
+  Route,
+  DollarSign,
+  Calculator,
+  MessageCircle,
+  Clipboard,
+  Award,
+  Star,
+  Users,
+  Phone,
+  Gift,
+  Sparkles,
+  Heart,
+  ThumbsUp,
+  CheckCircle,
+  UserCheck,
+  Wallet,
+  FileCheck,
+  Truck,
+  Key,
+  Camera,
+  Shield,
+  Target,
+  Clock,
+  Lightbulb,
+  Check,
+  // Fallback variants
+  'Shirt': UserCheck,
+  'Hand': Handshake,
+  'Ear': Users,
+  'Question': HelpCircle,
+  'Steering': Car,
+  'Features': Sparkles,
+  'Benefits': Gift,
+  'Trade': DollarSign,
+  'Numbers': Calculator,
+  'Paperwork': FileCheck,
+  'Keys': Key,
+  'Delivery': Truck,
+  'Thank': Heart,
+}
+
+const getIconComponent = (iconName?: string): LucideIcon => {
+  if (!iconName) return CheckCircle
+  return iconMap[iconName] || CheckCircle
+}
 
 interface StepContentProps {
   step: StepData
@@ -150,37 +233,44 @@ export function StepContent({ step, prevStep, nextStep }: StepContentProps) {
             <div>
               <h2 className="text-lg font-bold text-gray-900 mb-4">Key Actions</h2>
               <div className="grid gap-3">
-                {step.keyActions.map((action, idx) => (
-                  <div 
-                    key={idx}
-                    className={`bg-white rounded-xl border-2 transition-all cursor-pointer ${
-                      expandedAction === idx ? 'border-toyota-red shadow-lg' : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                    onClick={() => setExpandedAction(expandedAction === idx ? null : idx)}
-                  >
-                    <div className="flex items-center gap-4 p-4">
-                      <span className="text-3xl">{action.icon || '✓'}</span>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900">{action.title}</h3>
-                        {expandedAction !== idx && (
-                          <p className="text-sm text-gray-500 line-clamp-1">{action.description}</p>
-                        )}
-                      </div>
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-                        expandedAction === idx ? 'bg-toyota-red text-white' : 'bg-gray-100 text-gray-400'
-                      }`}>
-                        {expandedAction === idx ? <Check size={16} /> : <Play size={14} />}
-                      </div>
-                    </div>
-                    {expandedAction === idx && (
-                      <div className="px-4 pb-4 pt-0">
-                        <div className="bg-gray-50 rounded-lg p-4 ml-12">
-                          <p className="text-gray-700">{action.description}</p>
+                {step.keyActions.map((action, idx) => {
+                  const IconComponent = getIconComponent(action.icon)
+                  return (
+                    <div 
+                      key={idx}
+                      className={`bg-white rounded-xl border-2 transition-all cursor-pointer ${
+                        expandedAction === idx ? 'border-toyota-red shadow-lg' : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                      onClick={() => setExpandedAction(expandedAction === idx ? null : idx)}
+                    >
+                      <div className="flex items-center gap-4 p-4">
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                          expandedAction === idx ? 'bg-toyota-red text-white' : 'bg-gray-100 text-gray-600'
+                        }`}>
+                          <IconComponent size={24} />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-gray-900">{action.title}</h3>
+                          {expandedAction !== idx && (
+                            <p className="text-sm text-gray-500 line-clamp-1">{action.description}</p>
+                          )}
+                        </div>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+                          expandedAction === idx ? 'bg-toyota-red/20 text-toyota-red' : 'bg-gray-100 text-gray-400'
+                        }`}>
+                          {expandedAction === idx ? <Check size={16} /> : <Play size={14} />}
                         </div>
                       </div>
-                    )}
-                  </div>
-                ))}
+                      {expandedAction === idx && (
+                        <div className="px-4 pb-4 pt-0">
+                          <div className="bg-gray-50 rounded-lg p-4 ml-16">
+                            <p className="text-gray-700">{action.description}</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
             </div>
 

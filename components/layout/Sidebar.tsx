@@ -99,7 +99,7 @@ const navigation: NavSection[] = [
     items: [
       { name: 'Phone Skills', href: '/skills/phone', icon: Phone },
       { name: 'Objection Handling', href: '/skills/objections', icon: MessageCircle },
-      { name: 'Flashcard Practice', href: '/skills/flashcards', icon: Layers },
+      { name: 'Flashcards', href: '/skills/flashcards', icon: Layers },
       { name: 'Quiz Mode', href: '/skills/quiz', icon: Brain },
     ]
   },
@@ -123,7 +123,6 @@ const findSectionForPath = (pathname: string): string | null => {
       }
     }
   }
-  // Default to 'start' for home page
   if (pathname === '/') return 'start'
   return null
 }
@@ -142,7 +141,7 @@ export function Sidebar() {
       initial[section.id] = section.id === activeSection
     })
     setOpenSections(initial)
-  }, []) // Only on mount
+  }, [])
 
   // Auto-expand section when navigating to a new page
   useEffect(() => {
@@ -157,18 +156,9 @@ export function Sidebar() {
     setMobileOpen(false)
   }, [pathname])
 
-  // Close mobile menu on escape key
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMobileOpen(false)
-    }
-    document.addEventListener('keydown', handleEscape)
-    return () => document.removeEventListener('keydown', handleEscape)
-  }, [])
-
+  // Exact match for active state
   const isActive = (href: string) => {
-    if (href === '/') return pathname === '/'
-    return pathname === href || pathname.startsWith(href + '/')
+    return pathname === href
   }
 
   const isSectionActive = (section: NavSection) => {
@@ -202,10 +192,10 @@ export function Sidebar() {
       {/* Sidebar */}
       <nav className={`
         fixed top-0 left-0 h-full z-50 
-        bg-gradient-to-b from-gray-900 via-gray-900 to-black
+        bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950
         text-white flex flex-col
         transition-all duration-300 ease-in-out
-        ${collapsed ? 'w-16' : 'w-64'}
+        ${collapsed ? 'w-16' : 'w-60'}
         ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0
       `}>
@@ -215,67 +205,66 @@ export function Sidebar() {
             <img 
               src="https://firebasestorage.googleapis.com/v0/b/ahtocc-sales-training.firebasestorage.app/o/images%2Flogos%2FTOCC%20Palm%20BUG%20-%20color.png?alt=media" 
               alt="TOCC"
-              className="h-10 w-10 flex-shrink-0"
+              className="h-9 w-9 flex-shrink-0"
             />
             {!collapsed && (
-              <div className="flex flex-col">
-                <span className="text-xs font-bold uppercase tracking-wide leading-tight">Toyota of Coconut Creek</span>
-                <span className="text-[10px] text-gray-400 uppercase tracking-wider">Sales Training</span>
+              <div className="flex flex-col min-w-0">
+                <span className="text-[11px] font-bold uppercase tracking-wide leading-tight truncate">Toyota of Coconut Creek</span>
+                <span className="text-[9px] text-gray-500 uppercase tracking-wider">Sales Training</span>
               </div>
             )}
           </Link>
           
-          {/* Mobile close button */}
           <button 
             onClick={() => setMobileOpen(false)}
-            className="lg:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+            className="lg:hidden p-1.5 hover:bg-white/10 rounded-lg transition-colors"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
         {/* Navigation */}
-        <div className="flex-1 overflow-y-auto py-3">
+        <div className="flex-1 overflow-y-auto py-2 scrollbar-thin">
           {navigation.map((section) => (
-            <div key={section.id} className="mb-1">
-              {/* Section Header - Clickable to expand/collapse */}
+            <div key={section.id} className="mb-0.5">
+              {/* Section Header */}
               <button
                 onClick={() => !collapsed && toggleSection(section.id)}
                 className={`
-                  w-full flex items-center gap-3 px-4 py-2.5
+                  w-full flex items-center gap-2.5 px-3 py-2
                   transition-all duration-150
                   ${collapsed ? 'justify-center' : 'justify-between'}
                   ${isSectionActive(section) 
-                    ? 'text-white bg-white/5' 
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'text-white' 
+                    : 'text-gray-500 hover:text-gray-300'
                   }
                 `}
                 title={collapsed ? section.title : undefined}
               >
-                <div className="flex items-center gap-3">
-                  <section.icon size={18} className={isSectionActive(section) ? 'text-red-500' : ''} />
+                <div className="flex items-center gap-2.5">
+                  <section.icon size={16} className={isSectionActive(section) ? 'text-red-500' : ''} />
                   {!collapsed && (
-                    <span className="font-semibold text-sm">{section.title}</span>
+                    <span className="text-xs font-semibold uppercase tracking-wide">{section.title}</span>
                   )}
                 </div>
                 {!collapsed && (
                   <ChevronDown 
-                    size={16} 
-                    className={`transition-transform duration-200 ${openSections[section.id] ? 'rotate-180' : ''}`}
+                    size={14} 
+                    className={`transition-transform duration-200 opacity-50 ${openSections[section.id] ? 'rotate-180' : ''}`}
                   />
                 )}
               </button>
               
               {/* Section Items */}
               {!collapsed && openSections[section.id] && (
-                <div className="mt-1 ml-4 pl-4 border-l border-white/10">
+                <div className="pb-2">
                   {section.items.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={handleNavClick}
                       className={`
-                        flex items-center gap-2.5 px-3 py-2 rounded-md text-[13px]
+                        flex items-center gap-2 mx-2 px-3 py-1.5 rounded-lg text-sm
                         transition-all duration-150
                         ${isActive(item.href) 
                           ? 'bg-red-600 text-white font-medium' 
@@ -291,9 +280,9 @@ export function Sidebar() {
                           {item.stepNum}
                         </span>
                       ) : item.icon ? (
-                        <item.icon size={14} className="opacity-70" />
+                        <item.icon size={14} className="opacity-60" />
                       ) : null}
-                      <span>{item.name}</span>
+                      <span className="truncate">{item.name}</span>
                     </Link>
                   ))}
                 </div>
@@ -303,74 +292,69 @@ export function Sidebar() {
         </div>
 
         {/* Footer */}
-        <div className="p-3 border-t border-white/10 space-y-2">
-          {/* Downloads Button */}
+        <div className="p-2 border-t border-white/10 space-y-1.5">
           <Link 
             href="/export" 
             onClick={handleNavClick}
             className={`
-              flex items-center justify-center gap-2 w-full py-2.5 
+              flex items-center justify-center gap-2 w-full py-2 
               bg-red-600 hover:bg-red-700 text-white text-sm font-semibold 
               rounded-lg transition-colors
-              ${collapsed ? 'px-2' : 'px-4'}
             `}
             title={collapsed ? 'Downloads' : undefined}
           >
-            <Download size={18} />
+            <Download size={16} />
             {!collapsed && <span>Downloads</span>}
           </Link>
           
-          {/* Admin & Logout Row */}
-          <div className={`flex gap-2 ${collapsed ? 'flex-col' : ''}`}>
+          <div className={`flex gap-1.5 ${collapsed ? 'flex-col' : ''}`}>
             <Link 
               href="/admin" 
               onClick={handleNavClick}
               className={`
-                flex items-center justify-center gap-2 py-2 
-                bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white
-                text-sm rounded-lg transition-colors
+                flex items-center justify-center gap-2 py-1.5 
+                bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white
+                text-xs rounded-lg transition-colors
                 ${collapsed ? 'w-full px-2' : 'flex-1 px-3'}
               `}
               title={collapsed ? 'Admin' : undefined}
             >
-              <Settings size={16} />
+              <Settings size={14} />
               {!collapsed && <span>Admin</span>}
             </Link>
             <button 
               onClick={handleLogout}
               className={`
-                flex items-center justify-center py-2 
-                bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white
+                flex items-center justify-center py-1.5 
+                bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white
                 rounded-lg transition-colors
-                ${collapsed ? 'w-full px-2' : 'px-3'}
+                ${collapsed ? 'w-full px-2' : 'px-2.5'}
               `}
               title="Logout"
             >
-              <LogOut size={16} />
+              <LogOut size={14} />
             </button>
           </div>
 
-          {/* Collapse Toggle - Desktop Only */}
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className="hidden lg:flex items-center justify-center gap-2 w-full py-2 text-gray-500 hover:text-gray-300 text-xs transition-colors"
+            className="hidden lg:flex items-center justify-center gap-1.5 w-full py-1.5 text-gray-600 hover:text-gray-400 text-[10px] transition-colors"
           >
-            {collapsed ? <PanelLeft size={16} /> : <PanelLeftClose size={16} />}
+            {collapsed ? <PanelLeft size={14} /> : <PanelLeftClose size={14} />}
             {!collapsed && <span>Collapse</span>}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Button - Exposed for Header to use */}
+      {/* Mobile Menu Button */}
       <MobileMenuButton onClick={() => setMobileOpen(true)} />
       
-      {/* Spacer for main content */}
-      <div className={`hidden lg:block flex-shrink-0 transition-all duration-300 ${collapsed ? 'w-16' : 'w-64'}`} />
+      {/* Spacer */}
+      <div className={`hidden lg:block flex-shrink-0 transition-all duration-300 ${collapsed ? 'w-16' : 'w-60'}`} />
     </>
   )
 }
 
-// Separate component for mobile menu button that Header can trigger
 function MobileMenuButton({ onClick }: { onClick: () => void }) {
   useEffect(() => {
     (window as any).openMobileMenu = onClick
