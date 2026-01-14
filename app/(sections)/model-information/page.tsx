@@ -341,22 +341,22 @@ export default function ModelInformationPage() {
 
       {/* Quick Reference */}
       <div className="mt-8 bg-navy text-white rounded-xl p-6">
-        <h3 className="font-bold text-lg mb-4">Quick Reference: Best Sellers</h3>
+        <h3 className="font-bold text-lg mb-4 text-white">Quick Reference: Best Sellers</h3>
         <div className="grid md:grid-cols-4 gap-4">
           <div className="text-center">
-            <div className="text-2xl font-black">#1</div>
+            <div className="text-2xl font-black text-white">#1</div>
             <div className="text-sm text-white/80">RAV4 - Best-selling non-truck</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-black">#1</div>
+            <div className="text-2xl font-black text-white">#1</div>
             <div className="text-sm text-white/80">Camry - Best-selling sedan</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-black">#1</div>
+            <div className="text-2xl font-black text-white">#1</div>
             <div className="text-sm text-white/80">Tacoma - Mid-size truck leader</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-black">57</div>
+            <div className="text-2xl font-black text-white">57</div>
             <div className="text-sm text-white/80">Prius MPG - Best in class</div>
           </div>
         </div>

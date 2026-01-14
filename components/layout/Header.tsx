@@ -24,10 +24,16 @@ const pageTitles: Record<string, string> = {
   '/skills/phone': 'Phone Skills',
   '/skills/objections': 'Objection Handling',
   '/skills/flashcards': 'Flashcard Practice',
+  '/skills/quiz': 'Quiz Mode',
   '/resources/forms': 'Forms Library',
   '/resources/scripts': 'Scripts Library',
   '/resources/programs': 'Toyota Programs',
   '/export': 'Export & Print',
+  '/admin': 'Admin Panel',
+  '/csi': 'CSI & Reviews',
+  '/follow-up': 'Follow-Up & Referrals',
+  '/fi-handoff': 'F&I Handoff',
+  '/ppp': 'Premium Protect Plus',
 }
 
 export function Header() {
@@ -57,7 +63,8 @@ export function Header() {
         const skillNames: Record<string, string> = {
           'phone': 'Phone Skills',
           'objections': 'Objection Handling',
-          'flashcards': 'Flashcards'
+          'flashcards': 'Flashcards',
+          'quiz': 'Quiz Mode'
         }
         crumbs.push({ name: skillNames[parts[1]] || parts[1], href: pathname })
       }
@@ -82,38 +89,45 @@ export function Header() {
     return crumbs
   }
 
+  const handleMenuClick = () => {
+    // Call the global function exposed by Sidebar
+    if (typeof window !== 'undefined' && (window as any).openMobileMenu) {
+      (window as any).openMobileMenu()
+    }
+  }
+
   const breadcrumbs = getBreadcrumbs()
 
   return (
-    <header className="content-header">
-      <div className="header-breadcrumb">
-        <Link href="/" className="text-gray-400 hover:text-gray-600 transition-colors">
-          <Home size={16} />
-        </Link>
-        {breadcrumbs.map((crumb, idx) => (
-          <span key={idx} className="flex items-center gap-2">
-            <ChevronRight size={14} className="text-gray-300" />
-            {crumb.href && idx < breadcrumbs.length - 1 ? (
-              <Link href={crumb.href} className="hover:text-gray-900 transition-colors">
-                {crumb.name}
-              </Link>
-            ) : (
-              <span className="current">{crumb.name}</span>
-            )}
-          </span>
-        ))}
-      </div>
-      <div className="header-actions">
+    <header className="sticky top-0 z-30 bg-white border-b border-gray-200 px-4 lg:px-8 h-16 flex items-center justify-between">
+      <div className="flex items-center gap-3">
+        {/* Mobile Menu Button */}
         <button 
-          className="btn btn-ghost p-2 lg:hidden"
-          onClick={() => {
-            document.querySelector('.sidebar')?.classList.toggle('open')
-            document.querySelector('.sidebar-overlay')?.classList.toggle('active')
-          }}
+          className="lg:hidden p-2 -ml-2 hover:bg-gray-100 rounded-lg transition-colors"
+          onClick={handleMenuClick}
           aria-label="Open menu"
         >
-          <Menu size={20} />
+          <Menu size={22} />
         </button>
+        
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-sm text-gray-500">
+          <Link href="/" className="hover:text-gray-700 transition-colors">
+            <Home size={16} />
+          </Link>
+          {breadcrumbs.map((crumb, idx) => (
+            <span key={idx} className="flex items-center gap-2">
+              <ChevronRight size={14} className="text-gray-300" />
+              {crumb.href && idx < breadcrumbs.length - 1 ? (
+                <Link href={crumb.href} className="hover:text-gray-900 transition-colors">
+                  {crumb.name}
+                </Link>
+              ) : (
+                <span className="text-gray-900 font-medium">{crumb.name}</span>
+              )}
+            </span>
+          ))}
+        </div>
       </div>
     </header>
   )

@@ -9,8 +9,17 @@ import {
 } from 'lucide-react'
 import { forms, scripts } from '@/data/documents'
 
-const ADMIN_PASSWORD = 'tocc2026'
+const DEFAULT_ADMIN_PASSWORD = 'ToyotaSuccess2026!@#'
 const DEFAULT_SITE_PASSWORD = 'tocc2026'
+
+// Get current admin password (checks localStorage for custom)
+const getAdminPassword = (): string => {
+  if (typeof window !== 'undefined') {
+    const custom = localStorage.getItem('tocc-admin-password')
+    if (custom) return custom
+  }
+  return DEFAULT_ADMIN_PASSWORD
+}
 
 // Model brochures configuration
 const defaultModelBrochures = [
@@ -88,6 +97,13 @@ export default function AdminPage() {
   const [confirmSitePassword, setConfirmSitePassword] = useState('')
   const [showSitePassword, setShowSitePassword] = useState(false)
   const [passwordChangeError, setPasswordChangeError] = useState<string | null>(null)
+  
+  // Admin password state
+  const [adminPassword, setAdminPassword] = useState('')
+  const [newAdminPassword, setNewAdminPassword] = useState('')
+  const [confirmAdminPassword, setConfirmAdminPassword] = useState('')
+  const [showAdminPassword, setShowAdminPassword] = useState(false)
+  const [adminPasswordError, setAdminPasswordError] = useState<string | null>(null)
 
   // Load settings from localStorage
   useEffect(() => {
@@ -106,11 +122,14 @@ export default function AdminPage() {
     if (savedPrograms) setProgramUrls(JSON.parse(savedPrograms))
     if (savedTraining) setTrainingUrls(JSON.parse(savedTraining))
     setSitePassword(savedSitePassword || DEFAULT_SITE_PASSWORD)
+    
+    const savedAdminPassword = localStorage.getItem('tocc-admin-password')
+    setAdminPassword(savedAdminPassword || DEFAULT_ADMIN_PASSWORD)
   }, [])
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
-    if (password === ADMIN_PASSWORD) {
+    if (password === getAdminPassword()) {
       setIsAuthenticated(true)
       setPasswordError(false)
     } else {
@@ -147,6 +166,37 @@ export default function AdminPage() {
     localStorage.removeItem('tocc-site-password')
     setSitePassword(DEFAULT_SITE_PASSWORD)
     showSaveMessage('Password reset to default')
+  }
+
+  const handleAdminPasswordChange = () => {
+    setAdminPasswordError(null)
+    
+    if (!newAdminPassword) {
+      setAdminPasswordError('Please enter a new password')
+      return
+    }
+    
+    if (newAdminPassword.length < 6) {
+      setAdminPasswordError('Password must be at least 6 characters')
+      return
+    }
+    
+    if (newAdminPassword !== confirmAdminPassword) {
+      setAdminPasswordError('Passwords do not match')
+      return
+    }
+    
+    localStorage.setItem('tocc-admin-password', newAdminPassword)
+    setAdminPassword(newAdminPassword)
+    setNewAdminPassword('')
+    setConfirmAdminPassword('')
+    showSaveMessage('Admin password updated successfully!')
+  }
+
+  const resetAdminPassword = () => {
+    localStorage.removeItem('tocc-admin-password')
+    setAdminPassword(DEFAULT_ADMIN_PASSWORD)
+    showSaveMessage('Admin password reset to default')
   }
 
   const showSaveMessage = (msg: string) => {
@@ -424,6 +474,92 @@ export default function AdminPage() {
                           <li>• Share the new password with your team after changing it</li>
                         </ul>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Admin Password Section */}
+              <div className="bg-white rounded-lg border border-gray-200 mt-6">
+                <div className="px-4 py-3 border-b border-gray-200 font-semibold flex items-center gap-2">
+                  <Shield size={18} />
+                  Admin Password
+                </div>
+                <div className="p-6">
+                  <p className="text-sm text-gray-600 mb-6">
+                    The admin password is required to access this admin panel. Keep it secure.
+                  </p>
+                  
+                  {/* Current Admin Password Display */}
+                  <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <div className="text-sm font-medium text-gray-700 mb-2">Current Admin Password</div>
+                    <div className="flex items-center gap-3">
+                      <code className="flex-1 px-3 py-2 bg-white border border-gray-200 rounded font-mono text-lg">
+                        {showAdminPassword ? adminPassword : '••••••••••••'}
+                      </code>
+                      <button
+                        onClick={() => setShowAdminPassword(!showAdminPassword)}
+                        className="p-2 text-gray-500 hover:text-gray-700"
+                      >
+                        {showAdminPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                      </button>
+                    </div>
+                    {adminPassword !== DEFAULT_ADMIN_PASSWORD && (
+                      <div className="mt-2 text-xs text-amber-600 flex items-center gap-1">
+                        <AlertTriangle size={12} />
+                        Custom admin password set
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Change Admin Password Form */}
+                  <div className="space-y-4">
+                    <h3 className="font-semibold text-gray-900">Change Admin Password</h3>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">New Admin Password</label>
+                      <input
+                        type="password"
+                        value={newAdminPassword}
+                        onChange={(e) => setNewAdminPassword(e.target.value)}
+                        placeholder="Enter new admin password"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-toyota-red/20 focus:border-toyota-red"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Admin Password</label>
+                      <input
+                        type="password"
+                        value={confirmAdminPassword}
+                        onChange={(e) => setConfirmAdminPassword(e.target.value)}
+                        placeholder="Confirm new admin password"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-toyota-red/20 focus:border-toyota-red"
+                      />
+                    </div>
+
+                    {adminPasswordError && (
+                      <div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 px-3 py-2 rounded-lg">
+                        <AlertTriangle size={16} />
+                        {adminPasswordError}
+                      </div>
+                    )}
+
+                    <div className="flex gap-3">
+                      <button
+                        onClick={handleAdminPasswordChange}
+                        className="px-4 py-2 bg-toyota-red text-white font-medium rounded-lg hover:bg-toyota-red-dark transition-colors"
+                      >
+                        Update Admin Password
+                      </button>
+                      {adminPassword !== DEFAULT_ADMIN_PASSWORD && (
+                        <button
+                          onClick={resetAdminPassword}
+                          className="px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors"
+                        >
+                          Reset to Default
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

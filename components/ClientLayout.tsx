@@ -12,14 +12,16 @@ interface ClientLayoutProps {
 export function ClientLayout({ children }: ClientLayoutProps) {
   return (
     <AuthGate>
-      <div className="app-container">
+      <div className="flex min-h-screen bg-gray-50">
         <Sidebar />
-        <main className="main-content">
+        <div className="flex-1 flex flex-col min-w-0">
           <Header />
-          <div className="content-body">
-            {children}
-          </div>
-        </main>
+          <main className="flex-1 p-4 lg:p-8">
+            <div className="max-w-5xl mx-auto">
+              {children}
+            </div>
+          </main>
+        </div>
       </div>
     </AuthGate>
   )
