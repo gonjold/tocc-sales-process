@@ -1,7 +1,8 @@
 'use client'
 
-import { Star, MessageSquare, Wrench, Phone, AlertTriangle, CheckCircle2, TrendingUp } from 'lucide-react'
+import { Star, MessageSquare, Wrench, Phone, AlertTriangle, CheckCircle2, TrendingUp, ChevronRight } from 'lucide-react'
 import { csiReviews } from '@/data/additional-content'
+import Link from 'next/link'
 
 export default function CSIPage() {
   const actionIcons: Record<string, React.ElementType> = {
@@ -119,29 +120,43 @@ export default function CSIPage() {
       </div>
 
       {/* Remember Box */}
-      <div className="bg-navy text-white rounded-xl p-6">
-        <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-          <AlertTriangle size={20} />
+      <div className="bg-navy text-white rounded-xl p-6 mb-8">
+        <h3 className="font-bold text-lg mb-3 flex items-center gap-2 text-white">
+          <AlertTriangle size={20} className="text-white" />
           Remember
         </h3>
-        <ul className="space-y-2 text-white/90">
-          <li className="flex items-start gap-2">
+        <ul className="space-y-2">
+          <li className="flex items-start gap-2 text-white/90">
             <CheckCircle2 size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
-            CSI surveys directly impact dealership bonuses and manufacturer incentives
+            <span>CSI surveys directly impact dealership bonuses and manufacturer incentives</span>
           </li>
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2 text-white/90">
             <CheckCircle2 size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
-            Your individual CSI scores affect your standing and opportunities
+            <span>Your individual CSI scores affect your standing and opportunities</span>
           </li>
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2 text-white/90">
             <CheckCircle2 size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
-            One bad survey can tank your monthly average - prevention is key
+            <span>One bad survey can tank your monthly average - prevention is key</span>
           </li>
-          <li className="flex items-start gap-2">
+          <li className="flex items-start gap-2 text-white/90">
             <CheckCircle2 size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
-            Follow up BEFORE the survey arrives, not after
+            <span>Follow up BEFORE the survey arrives, not after</span>
           </li>
         </ul>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+        <Link href="/road-to-sale/step/10" className="text-gray-600 hover:text-gray-900 flex items-center gap-1">
+          ← Back to Step 10: Delivery
+        </Link>
+        <Link 
+          href="/follow-up"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Follow-Up & Referrals
+          <ChevronRight size={20} />
+        </Link>
       </div>
     </div>
   )

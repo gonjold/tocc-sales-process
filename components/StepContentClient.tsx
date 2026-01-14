@@ -471,9 +471,18 @@ export function StepContent({ step, prevStep, nextStep }: StepContentProps) {
             ← Back to Overview
           </Link>
         )}
-        {nextStep ? (
+        {/* Step 9 goes to F&I Handoff, then to Step 10 */}
+        {step.stepNum === 9 ? (
           <Link 
-            href={`/road-to-sale/step/${step.stepNum + 1}`}
+            href="/fi-handoff"
+            className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+          >
+            Next: F&I Handoff
+            <ChevronRight size={20} />
+          </Link>
+        ) : nextStep ? (
+          <Link 
+            href={`/road-to-sale/step/${nextStep.stepNum}`}
             className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
           >
             Next: {nextStep.title}
@@ -481,10 +490,10 @@ export function StepContent({ step, prevStep, nextStep }: StepContentProps) {
           </Link>
         ) : (
           <Link 
-            href="/skills/phone"
+            href="/csi"
             className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
           >
-            Continue to Phone Skills
+            Continue to After the Sale
             <ChevronRight size={20} />
           </Link>
         )}
