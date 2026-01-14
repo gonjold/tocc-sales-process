@@ -229,33 +229,45 @@ export function Sidebar() {
         <div className="flex-1 overflow-y-auto py-2 scrollbar-thin">
           {navigation.map((section) => (
             <div key={section.id} className="mb-0.5">
-              {/* Section Header */}
-              <button
-                onClick={() => !collapsed && toggleSection(section.id)}
-                className={`
-                  w-full flex items-center gap-2.5 px-3 py-2
-                  transition-all duration-150
-                  ${collapsed ? 'justify-center' : 'justify-between'}
-                  ${isSectionActive(section) 
-                    ? 'text-white' 
-                    : 'text-gray-500 hover:text-gray-300'
-                  }
-                `}
-                title={collapsed ? section.title : undefined}
-              >
-                <div className="flex items-center gap-2.5">
-                  <section.icon size={16} className={isSectionActive(section) ? 'text-red-500' : ''} />
-                  {!collapsed && (
+              {/* Section Header - In collapsed mode, navigate to first item */}
+              {collapsed ? (
+                <Link
+                  href={section.items[0].href}
+                  onClick={handleNavClick}
+                  className={`
+                    w-full flex items-center justify-center px-3 py-2.5
+                    transition-all duration-150
+                    ${isSectionActive(section) 
+                      ? 'text-white' 
+                      : 'text-gray-500 hover:text-gray-300'
+                    }
+                  `}
+                  title={section.title}
+                >
+                  <section.icon size={18} className={isSectionActive(section) ? 'text-red-500' : ''} />
+                </Link>
+              ) : (
+                <button
+                  onClick={() => toggleSection(section.id)}
+                  className={`
+                    w-full flex items-center gap-2.5 px-3 py-2
+                    transition-all duration-150 justify-between
+                    ${isSectionActive(section) 
+                      ? 'text-white' 
+                      : 'text-gray-500 hover:text-gray-300'
+                    }
+                  `}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <section.icon size={16} className={isSectionActive(section) ? 'text-red-500' : ''} />
                     <span className="text-xs font-semibold uppercase tracking-wide">{section.title}</span>
-                  )}
-                </div>
-                {!collapsed && (
+                  </div>
                   <ChevronDown 
                     size={14} 
                     className={`transition-transform duration-200 opacity-50 ${openSections[section.id] ? 'rotate-180' : ''}`}
                   />
-                )}
-              </button>
+                </button>
+              )}
               
               {/* Section Items */}
               {!collapsed && openSections[section.id] && (
