@@ -1017,6 +1017,56 @@ tr:hover td {
   .main-content {
     margin-left: 0;
   }
+  
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+  }
+  
+  .sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--gray-400);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  
+  .sidebar-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+  }
+}
+
+@media (min-width: 1025px) {
+  .sidebar-overlay {
+    display: none;
+  }
+  
+  .sidebar-close {
+    display: none;
+  }
 }
 
 /* === PRINT === */

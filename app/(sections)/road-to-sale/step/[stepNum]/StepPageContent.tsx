@@ -14,11 +14,65 @@ import {
   FileText,
   ArrowRight,
   Star,
-  ChevronDown
+  ChevronDown,
+  Hand,
+  Eye,
+  Smile,
+  Handshake,
+  Flame,
+  Calendar,
+  DollarSign,
+  Users,
+  Car,
+  ClipboardList,
+  ThumbsUp,
+  BarChart,
+  Sprout,
+  Search,
+  RefreshCw,
+  Settings,
+  Sparkles,
+  ParkingCircle,
+  Gem,
+  Dumbbell,
+  MessageCircle,
+  Monitor,
+  Smartphone,
+  Camera,
+  Key,
+  MessageSquare,
+  Map,
+  Route,
+  HelpCircle,
+  Heart,
+  Calculator,
+  CarFront,
+  PenLine,
+  Shirt,
+  File,
+  Ear,
+  Check
 } from 'lucide-react'
 import { StepData } from '@/data/steps'
 import { forms, getDocumentUrl } from '@/data/documents'
 import { DocumentModal, useDocumentModal } from '@/components/ui/DocumentModal'
+
+// Icon mapping from string names to components
+const iconMap: Record<string, React.ElementType> = {
+  Hand, Eye, Smile, Handshake, Target, Flame, Calendar, DollarSign, Users, Car,
+  ClipboardList, ThumbsUp, BarChart, Sprout, Search, RefreshCw, Settings, Sparkles,
+  ParkingCircle, Gem, Dumbbell, MessageCircle, Monitor, Smartphone, Camera, Key,
+  MessageSquare, Map, Route, HelpCircle, Heart, Calculator, CarFront, PenLine,
+  Shirt, File, FileText, Ear, CheckCircle, Star
+}
+
+// Helper function to get icon component
+function getIcon(iconName: string | undefined, size: number = 14) {
+  if (!iconName) return <Check size={size} />
+  const IconComponent = iconMap[iconName]
+  if (IconComponent) return <IconComponent size={size} />
+  return <Check size={size} />
+}
 
 interface StepContentProps {
   step: StepData
@@ -194,10 +248,10 @@ export function StepPageContent({ step, prevStep, nextStep }: StepContentProps) 
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '14px',
+                  color: 'var(--info)',
                   flexShrink: 0
                 }}>
-                  {action.icon || '✓'}
+                  {getIcon(action.icon, 16)}
                 </div>
                 <div>
                   <div style={{ fontWeight: '600', color: 'var(--gray-900)', marginBottom: '2px' }}>{action.title}</div>

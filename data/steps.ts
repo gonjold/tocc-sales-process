@@ -45,7 +45,7 @@ export const stepsData: StepData[] = [
     title: 'Meet & Greet',
     goal: 'Build rapport and establish trust within the first 30 seconds',
     duration: '2-5 minutes',
-    icon: '👋',
+    icon: 'Hand',
     keyMetric: '40% of sale success determined here',
     overview: `First impressions are everything in automotive sales. The Meet & Greet sets the tone for the entire customer experience. Studies show that customers decide within the first 10 seconds whether they trust you. Your goal is to make them feel welcome, relaxed, and confident that they're in good hands.
 
@@ -54,34 +54,34 @@ A proper Meet & Greet isn't about jumping into a sales pitch—it's about creati
       {
         title: 'Acknowledge Immediately',
         description: 'Make eye contact and smile within 10 seconds of seeing the customer, even if you\'re with someone else. A simple wave and "I\'ll be right with you!" goes a long way.',
-        icon: '👁️'
+        icon: 'Eye'
       },
       {
         title: 'Professional Appearance',
         description: 'Dress code compliance, name badge visible, confident posture. Your appearance speaks before you do.',
-        icon: '👔'
+        icon: 'Shirt'
       },
       {
         title: 'Warm Greeting',
         description: 'Enthusiastic but not overwhelming. Match the customer\'s energy level. Some want high energy, others prefer calm professionalism.',
-        icon: '😊'
+        icon: 'Smile'
       },
       {
         title: 'Get Their Name',
         description: 'Learn their name and use it naturally 2-3 times in the conversation. It shows you\'re paying attention and builds connection.',
-        icon: '📝'
+        icon: 'FileText'
       },
       {
         title: 'Put Them at Ease',
         description: 'Acknowledge their time is valuable. Set expectations: "I\'m here to help you find the right vehicle, no pressure." This reduces defensive barriers.',
-        icon: '🤝'
+        icon: 'Handshake'
       },
     ],
     scripts: [
       {
         label: 'Standard Opening',
         lines: [
-          { speaker: 'sales', text: 'Welcome to Al Hendrickson Toyota! How are you doing today?' },
+          { speaker: 'sales', text: 'Welcome to Toyota of Coconut Creek! How are you doing today?' },
           { speaker: 'customer', text: 'Good, thanks. Just looking around.' },
           { speaker: 'sales', text: 'Absolutely, that\'s what we\'re here for. I\'m [Name], and you are?' },
           { speaker: 'customer', text: 'I\'m John.' },
@@ -138,7 +138,7 @@ A proper Meet & Greet isn't about jumping into a sales pitch—it's about creati
     title: 'Qualify / Needs Assessment',
     goal: 'Understand their needs, wants, timeline, and buying situation',
     duration: '10-15 minutes',
-    icon: '🎯',
+    icon: 'Target',
     keyMetric: 'Identify hot buttons for later',
     overview: `The Qualify step is where you become a consultant, not a salesperson. Your job is to understand everything about their situation: what they need, what they want, who\'s involved in the decision, when they\'re looking to buy, and what their budget looks like.
 
@@ -164,27 +164,27 @@ The information you gather here will be gold throughout the rest of the process.
       {
         title: 'Ask Open-Ended Questions',
         description: 'Use who, what, when, where, why, and how questions. "What will this vehicle primarily be used for?" opens conversation better than "Do you need an SUV?"',
-        icon: '❓'
+        icon: 'HelpCircle'
       },
       {
         title: 'Identify Hot Buttons',
         description: 'Listen for emotional triggers: safety for family, reliability concerns, technology wants, style preferences. These become your selling points later.',
-        icon: '🔥'
+        icon: 'Flame'
       },
       {
         title: 'Qualify Timeline',
         description: 'Are they buying today, this week, this month? "When do you need to have this decision made?" helps you gauge urgency.',
-        icon: '📅'
+        icon: 'Calendar'
       },
       {
         title: 'Understand Budget',
         description: 'Payment-focused or price-focused? "Do you have a monthly payment in mind, or are you more focused on the overall price?"',
-        icon: '💰'
+        icon: 'DollarSign'
       },
       {
         title: 'Identify All Decision Makers',
         description: '"Is there anyone else involved in this decision who should be here today?" This prevents "I need to talk to my spouse" later.',
-        icon: '👥'
+        icon: 'Users'
       },
     ],
     scripts: [
@@ -251,7 +251,7 @@ The information you gather here will be gold throughout the rest of the process.
     title: 'Vehicle Selection',
     goal: 'Select the right vehicle(s) based on their qualified needs',
     duration: '5-10 minutes',
-    icon: '🚗',
+    icon: 'Car',
     keyMetric: 'Limit to 2-3 options maximum',
     overview: `Now it's time to match their needs to inventory. The key here is to select vehicles strategically—not just show them everything on the lot. Too many options leads to analysis paralysis.
 
@@ -260,27 +260,27 @@ Use what you learned in qualification to guide your selection. If they said safe
       {
         title: 'Review Your Notes',
         description: 'Before walking to inventory, mentally review what you learned. What are their hot buttons? What\'s the budget? New or used?',
-        icon: '📋'
+        icon: 'ClipboardList'
       },
       {
         title: 'Limit Options',
         description: 'Show 2-3 vehicles maximum. "I\'ve picked out two that I think are perfect for what you described. Let me show you why."',
-        icon: '✌️'
+        icon: 'ThumbsUp'
       },
       {
         title: 'Lead with Best Fit',
         description: 'Start with the vehicle that best matches their needs, not the one with the highest profit. Trust is more valuable than one deal.',
-        icon: '🎯'
+        icon: 'Target'
       },
       {
         title: 'Know Your Inventory',
         description: 'Be familiar with what\'s in stock, incoming units, and competitive advantages of each model.',
-        icon: '📊'
+        icon: 'BarChart'
       },
       {
         title: 'Plant Seeds',
         description: 'As you walk to the vehicle, mention key features: "This one has the Toyota Safety Sense 3.0 you\'ll love for family driving."',
-        icon: '🌱'
+        icon: 'Sprout'
       },
     ],
     scripts: [
@@ -341,7 +341,7 @@ Use what you learned in qualification to guide your selection. If they said safe
     title: 'Walkaround / Presentation',
     goal: 'Build value and excitement through a professional vehicle presentation',
     duration: '15-20 minutes',
-    icon: '🔍',
+    icon: 'Search',
     keyMetric: 'Touch every feature you mention',
     overview: `The walkaround is your chance to showcase the vehicle and build value. This isn't about listing features—it's about connecting features to benefits that matter to THIS customer.
 
@@ -350,27 +350,27 @@ Use the 6-point walkaround method: Front, Driver Side, Rear, Passenger Side, Eng
       {
         title: '6-Point Walkaround',
         description: 'Systematic approach: Front → Driver Side → Rear → Passenger Side → Engine/Under Hood → Interior. This ensures you cover everything.',
-        icon: '🔄'
+        icon: 'RefreshCw'
       },
       {
         title: 'Feature-Benefit-Hot Button',
         description: 'Connect features to benefits, then to their specific need: "This has blind spot monitoring (feature), which alerts you to cars you can\'t see (benefit)—perfect for keeping the kids safe (hot button)."',
-        icon: '🎯'
+        icon: 'Target'
       },
       {
         title: 'Touch Everything',
         description: 'Physically touch and demonstrate each feature. Open doors, adjust seats, show storage. Physical interaction creates ownership feelings.',
-        icon: '✋'
+        icon: 'Hand'
       },
       {
         title: 'Involve the Customer',
         description: '"Go ahead, sit in the driver\'s seat and adjust it to your comfort. How does that feel?" Get them touching the vehicle.',
-        icon: '🤝'
+        icon: 'Handshake'
       },
       {
         title: 'Build Value with Programs',
         description: 'Integrate ToyotaCare, Toyoguard Platinum, and TSS 3.0 into your presentation. These are included values they won\'t get elsewhere.',
-        icon: '💎'
+        icon: 'Gem'
       },
     ],
     scripts: [
@@ -450,7 +450,7 @@ Use the 6-point walkaround method: Front, Driver Side, Rear, Passenger Side, Eng
     title: 'Test Drive',
     goal: 'Let them experience ownership and fall in love with the vehicle',
     duration: '20-30 minutes',
-    icon: '🛣️',
+    icon: 'Route',
     keyMetric: 'Test drives increase closing rate by 50%',
     overview: `The test drive is the most powerful step in the sales process. It's where the customer mentally transitions from "shopping" to "owning." Your goal is to create an emotional connection between them and the vehicle.
 
@@ -459,27 +459,27 @@ Every minute on a test drive increases your closing probability. Use a planned r
       {
         title: 'Always Offer the Drive',
         description: 'Every customer should drive. "Let me get the keys so you can see how it feels behind the wheel." Not "Would you like to drive?"',
-        icon: '🔑'
+        icon: 'Key'
       },
       {
         title: 'Pre-Drive Setup',
         description: 'Adjust mirrors, seat position, and steering wheel for the driver. Pair their phone to Bluetooth. Make them comfortable.',
-        icon: '⚙️'
+        icon: 'Settings'
       },
       {
         title: 'Use a Planned Route',
         description: 'Have a route that shows off the vehicle: highway merge (power), neighborhoods (quiet ride), hills if available. 10-15 minutes minimum.',
-        icon: '🗺️'
+        icon: 'Map'
       },
       {
         title: 'Let Them Drive',
         description: 'You drive first to demonstrate features, then swap. The customer should drive the majority of the test drive.',
-        icon: '🚙'
+        icon: 'CarFront'
       },
       {
         title: 'Ask Trial Close Questions',
         description: 'During the drive: "How do you like the acceleration?" "Could you see yourself driving this every day?" Plant seeds for Step 6.',
-        icon: '💬'
+        icon: 'MessageCircle'
       },
     ],
     scripts: [
@@ -552,7 +552,7 @@ Every minute on a test drive increases your closing probability. Use a planned r
     title: 'Trial Close',
     goal: 'Confirm interest, identify concerns, and prepare for the write-up',
     duration: '5-10 minutes',
-    icon: '🤔',
+    icon: 'HelpCircle',
     keyMetric: 'Uncover objections early',
     overview: `The trial close happens after the test drive while emotions are high. You're not asking them to buy—you're confirming they've found the right vehicle and identifying any remaining concerns.
 
@@ -561,27 +561,27 @@ This is where you smoke out objections before getting to numbers. It's much easi
       {
         title: 'Park and Pivot',
         description: 'Park the vehicle in a good spot for delivery photos. Turn toward them and have a conversation—don\'t rush back inside.',
-        icon: '🅿️'
+        icon: 'ParkingCircle'
       },
       {
         title: 'Assumptive Language',
         description: 'Use "when" not "if": "When you take this home..." not "If you decide to buy..." Subtle but powerful.',
-        icon: '💬'
+        icon: 'MessageCircle'
       },
       {
         title: 'Ask for Feedback',
         description: '"What did you like most about the drive?" "Is there anything you were hoping for that you didn\'t see?"',
-        icon: '❓'
+        icon: 'HelpCircle'
       },
       {
         title: 'Confirm the Right Vehicle',
         description: '"So, is this the one? Based on everything you\'ve told me, this seems like the perfect fit."',
-        icon: '✅'
+        icon: 'CheckCircle'
       },
       {
         title: 'Identify Concerns',
         description: '"What questions do you still have?" "Is there anything holding you back from moving forward today?"',
-        icon: '🎯'
+        icon: 'Target'
       },
     ],
     scripts: [
@@ -645,7 +645,7 @@ This is where you smoke out objections before getting to numbers. It's much easi
     title: 'Trade Evaluation',
     goal: 'Accurately appraise the trade-in while managing expectations',
     duration: '15-20 minutes',
-    icon: '🔄',
+    icon: 'RefreshCw',
     keyMetric: 'Transparency builds trust',
     overview: `Trade evaluation is where deals can go off the rails if not handled properly. Customers almost always overvalue their trade because of emotional attachment. Your job is to set realistic expectations while gathering accurate information for appraisal.
 
@@ -654,27 +654,27 @@ Be thorough, be transparent, and document everything. Use tools like vAuto to sh
       {
         title: 'Walk the Trade Together',
         description: 'Don\'t just take the keys and disappear. Walk around the trade WITH the customer, pointing out what you see.',
-        icon: '👀'
+        icon: 'Eye'
       },
       {
         title: 'Document Everything',
         description: 'Note every scratch, dent, stain, worn tire. Take photos. This protects you and sets expectations.',
-        icon: '📸'
+        icon: 'Camera'
       },
       {
         title: 'Ask About History',
         description: 'Accidents, service history, payoff amount. "Has this vehicle ever been in an accident?" Get honest answers.',
-        icon: '📋'
+        icon: 'ClipboardList'
       },
       {
         title: 'Set Expectations Early',
         description: '"The market has really changed. Let me show you what similar vehicles are actually selling for..."',
-        icon: '📊'
+        icon: 'BarChart'
       },
       {
         title: 'Use Market Data',
         description: 'Show them vAuto or similar tool data. Third-party validation is more credible than "trust me."',
-        icon: '💻'
+        icon: 'Monitor'
       },
     ],
     scripts: [
@@ -747,7 +747,7 @@ Be thorough, be transparent, and document everything. Use tools like vAuto to sh
     title: 'Write Up / Pencil',
     goal: 'Present a complete deal structure to the customer',
     duration: '15-20 minutes',
-    icon: '✏️',
+    icon: 'PenLine',
     keyMetric: 'First pencil sets the tone',
     overview: `The write-up is where you structure the deal and present your first offer. This is where your CRM and desking tools become essential. You need to gather information, work with your manager, and present numbers in a way that makes sense for the customer.
 
@@ -756,27 +756,27 @@ The first pencil sets the tone for negotiation. Present it professionally, confi
       {
         title: 'Gather All Information',
         description: 'Customer info, trade details, desired vehicle, their stated budget. Have everything ready before going to the desk.',
-        icon: '📝'
+        icon: 'FileText'
       },
       {
         title: 'Work With Your Manager',
         description: 'Present the customer\'s situation to your desk manager. Include hot buttons, concerns, and any relevant details.',
-        icon: '👥'
+        icon: 'Users'
       },
       {
         title: 'Understand the Numbers',
         description: 'Know what every number means before presenting. If you don\'t understand it, don\'t present it.',
-        icon: '🧮'
+        icon: 'Calculator'
       },
       {
         title: 'Present Confidently',
         description: 'Don\'t apologize for the numbers. Present the complete picture: price, trade, payment, terms.',
-        icon: '💪'
+        icon: 'Dumbbell'
       },
       {
         title: 'Use Visual Tools',
         description: 'DriveCentric or four-square worksheet helps customers visualize the deal. Pictures are worth 1000 words.',
-        icon: '📊'
+        icon: 'BarChart'
       },
     ],
     scripts: [
@@ -847,7 +847,7 @@ The first pencil sets the tone for negotiation. Present it professionally, confi
     title: 'Negotiation & Close',
     goal: 'Work through objections and reach a mutually agreeable deal',
     duration: '20-45 minutes',
-    icon: '🤝',
+    icon: 'Handshake',
     keyMetric: 'Win-win deals create referrals',
     overview: `Negotiation isn't a battle—it's a collaborative process to find a deal that works for everyone. The customer needs to feel they got a fair deal, and the dealership needs to maintain profitability.
 
@@ -856,27 +856,27 @@ Use the L.A.R.C. method for objections: Listen, Acknowledge, Respond, Close. Sta
       {
         title: 'Listen First',
         description: 'When they object, let them finish completely. Don\'t interrupt or get defensive. Understanding their concern is half the battle.',
-        icon: '👂'
+        icon: 'Ear'
       },
       {
         title: 'Acknowledge Their Concern',
         description: '"I completely understand how you feel..." validates them. Fighting makes them dig in.',
-        icon: '🤗'
+        icon: 'Heart'
       },
       {
         title: 'Respond With Value',
         description: 'Answer with value, not just concessions. Why is this price fair? What are they getting?',
-        icon: '💎'
+        icon: 'Gem'
       },
       {
         title: 'Ask Closing Questions',
         description: 'After addressing the concern: "Does that address your concern? Are we ready to move forward?"',
-        icon: '❓'
+        icon: 'HelpCircle'
       },
       {
         title: 'Work With Your Manager',
         description: 'Don\'t make promises you can\'t keep. "Let me take that to my manager and see what we can do."',
-        icon: '👥'
+        icon: 'Users'
       },
     ],
     scripts: [
@@ -943,7 +943,7 @@ Use the L.A.R.C. method for objections: Listen, Acknowledge, Respond, Close. Sta
     title: 'Delivery',
     goal: 'Create a memorable experience that generates referrals',
     duration: '30-45 minutes',
-    icon: '🎉',
+    icon: 'PartyPopper',
     keyMetric: 'CSI scores drive future business',
     overview: `The delivery is NOT the end—it's the beginning of a relationship. A great delivery experience generates referrals, repeat business, and positive reviews. A poor delivery can undo all your hard work and lead to bad CSI scores.
 
@@ -952,32 +952,32 @@ Take your time, be thorough, and make it special. This is their moment—they ju
       {
         title: 'Prepare the Vehicle',
         description: 'Vehicle should be immaculate: full tank, dealer tag/plates, remove all stickers, parked in delivery area.',
-        icon: '✨'
+        icon: 'Sparkles'
       },
       {
         title: 'Technology Setup',
         description: 'Pair their phones, set radio presets, program garage door opener. Make the car theirs.',
-        icon: '📱'
+        icon: 'Smartphone'
       },
       {
         title: 'Walk Through All Features',
         description: 'Review key features, safety systems, and how to use technology. Don\'t assume they know.',
-        icon: '📋'
+        icon: 'ClipboardList'
       },
       {
         title: 'Explain Programs',
         description: 'Review ToyotaCare, Toyoguard Platinum, TSS 3.0, PPP, and any warranties purchased. They need to understand what they have.',
-        icon: '📄'
+        icon: 'File'
       },
       {
         title: 'Create a Memory',
         description: 'Photo by the car with a bow, congratulations sign. Make it social media worthy.',
-        icon: '📸'
+        icon: 'Camera'
       },
       {
         title: 'Ask for Referrals',
         description: '"Who else do you know that might be in the market?" Capture names while they\'re happy.',
-        icon: '🗣️'
+        icon: 'MessageSquare'
       },
     ],
     scripts: [

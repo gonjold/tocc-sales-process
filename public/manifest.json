@@ -1,0 +1,26 @@
+{
+  "name": "TOCC Sales Training",
+  "short_name": "TOCC Train",
+  "description": "Toyota of Coconut Creek Sales Training Portal",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#EB0A1E",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/ahtocc-sales-training.firebasestorage.app/o/images%2Flogos%2FTOCC%20Palm%20BUG%20-%20color.png?alt=media",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/ahtocc-sales-training.firebasestorage.app/o/images%2Flogos%2FTOCC%20Palm%20BUG%20-%20color.png?alt=media",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "education"],
+  "lang": "en-US"
+}

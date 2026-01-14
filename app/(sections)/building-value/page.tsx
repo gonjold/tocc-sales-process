@@ -300,6 +300,72 @@ export default function BuildingValuePage() {
         documentUrl={currentDoc?.url || null}
         fileType={currentDoc?.type}
       />
+
+      {/* Warranty Coverage Section */}
+      <div id="warranties" className="mt-8 pt-8 border-t-2 border-gray-200">
+        <h2 className="text-xl font-display font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <Shield className="text-navy" size={24} />
+          Toyota Warranty Coverage
+        </h2>
+        <p className="text-gray-600 mb-6">Know what's covered to build confidence and close deals.</p>
+
+        {/* New Vehicle Warranty */}
+        <div className="bg-white rounded-lg border border-gray-200 mb-6">
+          <div className="bg-navy text-white px-4 py-3 font-semibold rounded-t-lg">
+            New Vehicle Warranty
+          </div>
+          <div className="p-4">
+            <div className="space-y-3">
+              {[
+                { coverage: 'Basic Warranty', duration: '3 years / 36,000 mi', includes: 'Bumper-to-bumper coverage for defects' },
+                { coverage: 'Powertrain', duration: '5 years / 60,000 mi', includes: 'Engine, transmission, drivetrain' },
+                { coverage: 'Corrosion Perforation', duration: '5 years / unlimited', includes: 'Rust-through protection' },
+                { coverage: 'Hybrid Battery', duration: '10 years / 150,000 mi', includes: 'Hybrid system components', highlight: true },
+                { coverage: 'Safety Restraint', duration: '5 years / unlimited', includes: 'Airbags, seatbelts' },
+              ].map((item, idx) => (
+                <div key={idx} className={`flex items-center justify-between p-3 rounded-lg ${item.highlight ? 'bg-green-50 border border-green-200' : 'bg-gray-50'}`}>
+                  <div>
+                    <div className="font-semibold text-gray-900">{item.coverage}</div>
+                    <div className="text-sm text-gray-500">{item.includes}</div>
+                  </div>
+                  <div className={`font-bold ${item.highlight ? 'text-green-600' : 'text-navy'}`}>{item.duration}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* TCUV Warranty */}
+        <div className="bg-white rounded-lg border border-gray-200 mb-6">
+          <div className="bg-blue-600 text-white px-4 py-3 font-semibold rounded-t-lg">
+            Toyota Certified Used Vehicle (TCUV) Warranty
+          </div>
+          <div className="p-4">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="bg-blue-50 rounded-lg p-4">
+                <div className="font-bold text-blue-900 mb-1">Comprehensive Coverage</div>
+                <div className="text-2xl font-black text-blue-600 mb-1">12 mo / 12,000 mi</div>
+                <p className="text-sm text-blue-800">Covers 160+ components from date of certified purchase</p>
+              </div>
+              <div className="bg-blue-50 rounded-lg p-4">
+                <div className="font-bold text-blue-900 mb-1">Powertrain Coverage</div>
+                <div className="text-2xl font-black text-blue-600 mb-1">7 yr / 100,000 mi</div>
+                <p className="text-sm text-blue-800">From original in-service date with $0 deductible</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Warranty Talking Points */}
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+          <h4 className="font-bold text-amber-900 mb-2">Warranty Talking Points</h4>
+          <ul className="space-y-1 text-sm text-amber-800">
+            <li><strong>New:</strong> "Your new Toyota comes with 3 years/36K bumper-to-bumper, plus 5 years/60K powertrain. That's peace of mind built in."</li>
+            <li><strong>TCUV:</strong> "Certified means 160-point inspection, additional warranty, and Toyota-backed quality. It's almost like buying new."</li>
+            <li><strong>Hybrid:</strong> "10 years / 150,000 miles hybrid battery warranty is industry-leading. Most competitors offer far less."</li>
+          </ul>
+        </div>
+      </div>
     </div>
   )
 }

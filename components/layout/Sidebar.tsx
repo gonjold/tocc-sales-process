@@ -14,7 +14,15 @@ import {
   BookOpen,
   Car,
   FileSpreadsheet,
-  Download
+  Download,
+  ArrowRight,
+  Star,
+  Users,
+  Brain,
+  Settings,
+  Shield,
+  X,
+  LogOut
 } from 'lucide-react'
 
 const navigation = [
@@ -38,13 +46,22 @@ const navigation = [
       { name: 'Trade Evaluation', href: '/road-to-sale/step/7', stepNum: 7 },
       { name: 'Write-Up', href: '/road-to-sale/step/8', stepNum: 8 },
       { name: 'Negotiation', href: '/road-to-sale/step/9', stepNum: 9 },
+      { name: 'F&I Handoff', href: '/fi-handoff', icon: ArrowRight },
       { name: 'Delivery', href: '/road-to-sale/step/10', stepNum: 10 },
+    ]
+  },
+  {
+    title: 'After the Sale',
+    items: [
+      { name: 'CSI & Reviews', href: '/csi', icon: Star },
+      { name: 'Follow-Up & Referrals', href: '/follow-up', icon: Users },
     ]
   },
   {
     title: 'Building Value',
     items: [
       { name: 'Toyota Programs', href: '/building-value', icon: Award },
+      { name: 'Premium Protect Plus', href: '/ppp', icon: Shield },
       { name: 'Window Sticker', href: '/window-sticker', icon: FileSpreadsheet },
       { name: 'Model Information', href: '/model-information', icon: Car },
     ]
@@ -55,6 +72,7 @@ const navigation = [
       { name: 'Phone Skills', href: '/skills/phone', icon: Phone },
       { name: 'Objection Handling', href: '/skills/objections', icon: MessageCircle },
       { name: 'Flashcard Practice', href: '/skills/flashcards', icon: Layers },
+      { name: 'Quiz Mode', href: '/skills/quiz', icon: Brain },
     ]
   },
   {
@@ -66,6 +84,20 @@ const navigation = [
   },
 ]
 
+// Helper to close sidebar on mobile
+const closeMobileSidebar = () => {
+  if (typeof window !== 'undefined' && window.innerWidth <= 1024) {
+    document.querySelector('.sidebar')?.classList.remove('open')
+    document.querySelector('.sidebar-overlay')?.classList.remove('active')
+  }
+}
+
+// Logout function
+const handleLogout = () => {
+  sessionStorage.removeItem('tocc-auth')
+  window.location.reload()
+}
+
 export function Sidebar() {
   const pathname = usePathname()
 
@@ -75,51 +107,81 @@ export function Sidebar() {
   }
 
   return (
-    <nav className="sidebar">
-      {/* Header */}
-      <div className="sidebar-header">
-        <Link href="/" className="sidebar-logo">
-          <img 
-            src="https://firebasestorage.googleapis.com/v0/b/ahtocc-sales-training.firebasestorage.app/o/images%2Flogos%2FTOCC%20Palm%20BUG%20-%20color.png?alt=media" 
-            alt="TOCC"
-          />
-          <div className="sidebar-logo-text">
-            <span className="dealership-name">Al Hendrickson Toyota</span>
-            <span className="training-label">Sales Training</span>
-          </div>
-        </Link>
-      </div>
+    <>
+      {/* Overlay for mobile - click to close */}
+      <div 
+        className="sidebar-overlay"
+        onClick={closeMobileSidebar}
+      />
+      
+      <nav className="sidebar">
+        {/* Header */}
+        <div className="sidebar-header">
+          <Link href="/" className="sidebar-logo" onClick={closeMobileSidebar}>
+            <img 
+              src="https://firebasestorage.googleapis.com/v0/b/ahtocc-sales-training.firebasestorage.app/o/images%2Flogos%2FTOCC%20Palm%20BUG%20-%20color.png?alt=media" 
+              alt="TOCC"
+            />
+            <div className="sidebar-logo-text">
+              <span className="dealership-name">Toyota of Coconut Creek</span>
+              <span className="training-label">Sales Training</span>
+            </div>
+          </Link>
+          {/* Close button for mobile */}
+          <button 
+            className="sidebar-close lg:hidden"
+            onClick={closeMobileSidebar}
+            aria-label="Close menu"
+          >
+            <X size={20} />
+          </button>
+        </div>
 
-      {/* Navigation */}
-      <div className="sidebar-nav">
-        {navigation.map((section) => (
-          <div key={section.title} className="nav-section">
-            <div className="nav-section-title">{section.title}</div>
-            {section.items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`nav-item ${isActive(item.href) ? 'active' : ''}`}
-              >
-                {item.stepNum ? (
-                  <span className="step-num">{item.stepNum}</span>
-                ) : item.icon ? (
-                  <item.icon size={18} />
-                ) : null}
-                <span>{item.name}</span>
-              </Link>
-            ))}
-          </div>
-        ))}
-      </div>
+        {/* Navigation */}
+        <div className="sidebar-nav">
+          {navigation.map((section) => (
+            <div key={section.title} className="nav-section">
+              <div className="nav-section-title">{section.title}</div>
+              {section.items.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`nav-item ${isActive(item.href) ? 'active' : ''}`}
+                  onClick={closeMobileSidebar}
+                >
+                  {item.stepNum ? (
+                    <span className="step-num">{item.stepNum}</span>
+                  ) : item.icon ? (
+                    <item.icon size={18} />
+                  ) : null}
+                  <span>{item.name}</span>
+                </Link>
+              ))}
+            </div>
+          ))}
+        </div>
 
-      {/* Footer */}
-      <div className="sidebar-footer">
-        <Link href="/export" className="sidebar-footer-btn">
-          <Download size={16} />
-          Export / Print
-        </Link>
-      </div>
-    </nav>
+        {/* Footer */}
+        <div className="sidebar-footer">
+          <Link href="/export" className="sidebar-footer-btn" onClick={closeMobileSidebar}>
+            <Download size={16} />
+            Downloads
+          </Link>
+          <div className="flex gap-2 mt-2">
+            <Link href="/admin" className="sidebar-footer-btn flex-1 opacity-60 hover:opacity-100 bg-gray-800" onClick={closeMobileSidebar}>
+              <Settings size={16} />
+              Admin
+            </Link>
+            <button 
+              onClick={handleLogout}
+              className="sidebar-footer-btn px-3 opacity-60 hover:opacity-100 bg-gray-800"
+              title="Logout"
+            >
+              <LogOut size={16} />
+            </button>
+          </div>
+        </div>
+      </nav>
+    </>
   )
 }

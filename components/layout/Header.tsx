@@ -106,7 +106,11 @@ export function Header() {
       <div className="header-actions">
         <button 
           className="btn btn-ghost p-2 lg:hidden"
-          onClick={() => document.querySelector('.sidebar')?.classList.toggle('open')}
+          onClick={() => {
+            document.querySelector('.sidebar')?.classList.toggle('open')
+            document.querySelector('.sidebar-overlay')?.classList.toggle('active')
+          }}
+          aria-label="Open menu"
         >
           <Menu size={20} />
         </button>

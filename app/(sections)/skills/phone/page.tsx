@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Phone, ChevronDown, Lightbulb, AlertTriangle, Flame, PhoneMissed, Clock } from 'lucide-react'
+import { Phone, ChevronDown, Lightbulb, AlertTriangle, Flame, PhoneMissed, Clock, Smile, FileText, Target } from 'lucide-react'
 import { DocumentModal, useDocumentModal } from '@/components/ui/DocumentModal'
 import { getDocumentUrl } from '@/data/documents'
 
@@ -13,7 +13,7 @@ const scripts = [
     description: 'Initial inbound call from customer',
     path: 'scripts/Script-Phone-Up-Format.html',
     lines: [
-      { speaker: 'sales', text: '"Thank you for calling Al Hendrickson Toyota, this is [Name]. How can I help you today?"' },
+      { speaker: 'sales', text: '"Thank you for calling Toyota of Coconut Creek, this is [Name]. How can I help you today?"' },
       { speaker: 'customer', text: '"I\'m calling about the Camry I saw online..."' },
       { speaker: 'sales', text: '"Excellent choice! Before I pull that up, may I get your name and a good callback number in case we get disconnected?"' },
       { speaker: 'sales', text: '"Great, [Name]. That Camry is beautiful and available. When would you like to come see it—this afternoon or tomorrow morning work better?"' },
@@ -26,7 +26,7 @@ const scripts = [
     description: 'Urgent follow-up for ready buyers',
     path: 'scripts/Script-Fire-Phone.html',
     lines: [
-      { speaker: 'sales', text: '"Hi [Name], this is [Your Name] from Al Hendrickson Toyota. Great news! That [vehicle] you were interested in is still available."' },
+      { speaker: 'sales', text: '"Hi [Name], this is [Your Name] from Toyota of Coconut Creek. Great news! That [vehicle] you were interested in is still available."' },
       { speaker: 'sales', text: '"I wanted to reach out personally because we\'ve had a lot of interest. When can you come back to finish up?"' },
     ],
   },
@@ -37,7 +37,7 @@ const scripts = [
     description: 'Customer who no-showed',
     path: 'scripts/Script-Missed-Appointment.html',
     lines: [
-      { speaker: 'sales', text: '"Hi [Name], this is [Your Name] from Al Hendrickson Toyota. I had you on my calendar today—is everything okay?"' },
+      { speaker: 'sales', text: '"Hi [Name], this is [Your Name] from Toyota of Coconut Creek. I had you on my calendar today—is everything okay?"' },
       { speaker: 'sales', text: '"I wanted to make sure the [vehicle] is still here for you. What time works better to reschedule?"' },
     ],
   },
@@ -48,17 +48,17 @@ const scripts = [
     description: 'Monthly follow-up call',
     path: 'scripts/Script-Dirty-Thirty-Call.html',
     lines: [
-      { speaker: 'sales', text: '"Hi [Name], this is [Your Name] from Al Hendrickson Toyota. Just checking in—how\'s everything going with your car search?"' },
+      { speaker: 'sales', text: '"Hi [Name], this is [Your Name] from Toyota of Coconut Creek. Just checking in—how\'s everything going with your car search?"' },
       { speaker: 'sales', text: '"Has anything changed since we last spoke? I\'d love to help you find exactly what you\'re looking for."' },
     ],
   },
 ]
 
 const bestPractices = [
-  { icon: '📞', title: 'Answer Within 3 Rings', desc: 'Every ring is a potential lost customer' },
-  { icon: '😊', title: 'Smile While You Talk', desc: 'Customers can hear a smile in your voice' },
-  { icon: '📝', title: 'Get Info First', desc: 'Name and phone before vehicle questions' },
-  { icon: '🎯', title: 'Goal: The Appointment', desc: "Don't sell the car, sell the appointment" },
+  { icon: Phone, title: 'Answer Within 3 Rings', desc: 'Every ring is a potential lost customer' },
+  { icon: Smile, title: 'Smile While You Talk', desc: 'Customers can hear a smile in your voice' },
+  { icon: FileText, title: 'Get Info First', desc: 'Name and phone before vehicle questions' },
+  { icon: Target, title: 'Goal: The Appointment', desc: "Don't sell the car, sell the appointment" },
 ]
 
 export default function PhoneSkillsPage() {
@@ -95,7 +95,9 @@ export default function PhoneSkillsPage() {
       <div className="grid grid-cols-2 gap-3 mb-8">
         {bestPractices.map((practice, idx) => (
           <div key={idx} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-            <div className="text-2xl mb-2">{practice.icon}</div>
+            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-2">
+              <practice.icon className="text-blue-600" size={20} />
+            </div>
             <h4 className="font-bold text-gray-900 text-sm mb-1">{practice.title}</h4>
             <p className="text-xs text-gray-500">{practice.desc}</p>
           </div>
