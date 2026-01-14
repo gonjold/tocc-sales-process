@@ -1,6 +1,7 @@
 'use client'
 
-import { ArrowRight, FileCheck, Send, Clock, CheckCircle2, AlertTriangle, FileText, Users } from 'lucide-react'
+import { ArrowRight, FileCheck, Send, Clock, CheckCircle2, AlertTriangle, FileText, Users, ChevronRight, ChevronLeft } from 'lucide-react'
+import Link from 'next/link'
 
 export default function FIHandoffPage() {
   return (
@@ -213,12 +214,30 @@ export default function FIHandoffPage() {
       </div>
 
       {/* Warning */}
-      <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3">
+      <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3 mb-8">
         <AlertTriangle className="text-amber-600 flex-shrink-0 mt-0.5" size={20} />
         <div>
           <h5 className="font-bold text-amber-900 mb-1">Important</h5>
           <p className="text-sm text-amber-800">Never leave your customer alone during the F&I wait. Stay engaged, review the vehicle features, and keep them excited about their purchase. This prevents buyer's remorse.</p>
         </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+        <Link 
+          href="/road-to-sale/step/9"
+          className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          <ChevronLeft size={20} />
+          Back: Step 9 - Negotiation
+        </Link>
+        <Link 
+          href="/road-to-sale/step/10"
+          className="flex items-center gap-2 px-5 py-3 bg-toyota-red text-white rounded-xl font-medium hover:bg-red-700 transition-colors"
+        >
+          Next: Step 10 - Delivery
+          <ChevronRight size={20} />
+        </Link>
       </div>
     </div>
   )

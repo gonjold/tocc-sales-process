@@ -200,7 +200,7 @@ export function Sidebar() {
         lg:translate-x-0
       `}>
         {/* Header */}
-        <div className="p-4 border-b border-white/10 flex items-center justify-between">
+        <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between">
           <Link href="/" onClick={handleNavClick} className={`flex items-center gap-3 ${collapsed ? 'justify-center' : ''}`}>
             <img 
               src="https://firebasestorage.googleapis.com/v0/b/ahtocc-sales-training.firebasestorage.app/o/images%2Flogos%2FTOCC%20Palm%20BUG%20-%20color.png?alt=media" 
@@ -265,9 +265,9 @@ export function Sidebar() {
                       onClick={handleNavClick}
                       className={`
                         flex items-center gap-2 mx-2 px-3 py-1.5 rounded-lg text-sm
-                        transition-all duration-150
+                        transition-all duration-150 relative
                         ${isActive(item.href) 
-                          ? 'bg-red-600 text-white font-medium' 
+                          ? 'text-white font-medium' 
                           : 'text-gray-400 hover:bg-white/5 hover:text-white'
                         }
                       `}
@@ -275,14 +275,18 @@ export function Sidebar() {
                       {item.stepNum ? (
                         <span className={`
                           flex items-center justify-center w-5 h-5 text-[10px] font-bold rounded
-                          ${isActive(item.href) ? 'bg-white/20' : 'bg-white/10'}
+                          ${isActive(item.href) ? 'bg-red-600 text-white' : 'bg-white/10'}
                         `}>
                           {item.stepNum}
                         </span>
                       ) : item.icon ? (
-                        <item.icon size={14} className="opacity-60" />
+                        <item.icon size={14} className={isActive(item.href) ? 'text-white' : 'opacity-60'} />
                       ) : null}
-                      <span className="truncate">{item.name}</span>
+                      <span className="truncate flex-1">{item.name}</span>
+                      {/* Red dot indicator for active item */}
+                      {isActive(item.href) && (
+                        <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />
+                      )}
                     </Link>
                   ))}
                 </div>
