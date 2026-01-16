@@ -6,7 +6,7 @@ const ICON_URL = 'https://firebasestorage.googleapis.com/v0/b/ahtocc-sales-train
 
 export const metadata: Metadata = {
   title: 'Sales Process Portal | Toyota of Coconut Creek',
-  description: 'Comprehensive sales process portal for automotive professionals at Toyota of Coconut Creek',
+  description: 'Comprehensive sales process portal for automotive professionals',
   manifest: '/manifest.json',
   icons: {
     icon: ICON_URL,
@@ -28,9 +28,8 @@ export const viewport: Viewport = {
   themeColor: '#EB0A1E',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  viewportFit: 'cover',
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({
