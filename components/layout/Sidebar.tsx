@@ -156,6 +156,18 @@ export function Sidebar() {
     setMobileOpen(false)
   }, [pathname])
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
   // Exact match for active state (handle trailing slashes)
   const isActive = (href: string) => {
     const cleanPathname = pathname.replace(/\/$/, '') || '/'
@@ -200,7 +212,13 @@ export function Sidebar() {
         ${collapsed ? 'w-16' : 'w-60'}
         ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0
-      `}>
+        safe-area-inset
+      `}
+      style={{
+        paddingTop: 'env(safe-area-inset-top, 0px)',
+        paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+      }}
+      >
         {/* Header */}
         <div className="p-4 pl-5 border-b border-white/10 flex items-center justify-between">
           <Link href="/" onClick={handleNavClick} className={`flex items-center gap-3 ${collapsed ? 'justify-center' : ''}`}>
@@ -212,16 +230,17 @@ export function Sidebar() {
             {!collapsed && (
               <div className="flex flex-col min-w-0">
                 <span className="text-[10px] font-bold uppercase tracking-wide leading-tight">Toyota of Coconut Creek</span>
-                <span className="text-[8px] text-gray-500 uppercase tracking-wider">Sales Training</span>
+                <span className="text-[8px] text-gray-500 uppercase tracking-wider">Sales Process Portal</span>
               </div>
             )}
           </Link>
           
           <button 
             onClick={() => setMobileOpen(false)}
-            className="lg:hidden p-1.5 hover:bg-white/10 rounded-lg transition-colors"
+            className="lg:hidden p-2 -mr-1 hover:bg-white/10 rounded-lg transition-colors"
+            aria-label="Close menu"
           >
-            <X size={18} />
+            <X size={20} />
           </button>
         </div>
 
@@ -252,6 +271,7 @@ export function Sidebar() {
                   className={`
                     w-full flex items-center gap-2.5 px-3 py-2
                     transition-all duration-150 justify-between
+                    min-h-[44px]
                     ${isSectionActive(section) 
                       ? 'text-white' 
                       : 'text-gray-500 hover:text-gray-300'
@@ -278,8 +298,9 @@ export function Sidebar() {
                       href={item.href}
                       onClick={handleNavClick}
                       className={`
-                        flex items-center gap-2 mx-2 px-3 py-1.5 rounded-lg text-sm
+                        flex items-center gap-2 mx-2 px-3 py-2 rounded-lg text-sm
                         transition-all duration-150 relative
+                        min-h-[44px]
                         ${isActive(item.href) 
                           ? 'text-white font-medium' 
                           : 'text-gray-400 hover:bg-white/5 hover:text-white'
@@ -315,9 +336,9 @@ export function Sidebar() {
             href="/export" 
             onClick={handleNavClick}
             className={`
-              flex items-center justify-center gap-2 w-full py-2 
+              flex items-center justify-center gap-2 w-full py-2.5
               bg-red-600 hover:bg-red-700 text-white text-sm font-semibold 
-              rounded-lg transition-colors
+              rounded-lg transition-colors min-h-[44px]
             `}
             title={collapsed ? 'Downloads' : undefined}
           >
@@ -330,9 +351,9 @@ export function Sidebar() {
               href="/admin" 
               onClick={handleNavClick}
               className={`
-                flex items-center justify-center gap-2 py-1.5 
+                flex items-center justify-center gap-2 py-2
                 bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white
-                text-xs rounded-lg transition-colors
+                text-xs rounded-lg transition-colors min-h-[40px]
                 ${collapsed ? 'w-full px-2' : 'flex-1 px-3'}
               `}
               title={collapsed ? 'Admin' : undefined}
@@ -343,10 +364,10 @@ export function Sidebar() {
             <button 
               onClick={handleLogout}
               className={`
-                flex items-center justify-center py-1.5 
+                flex items-center justify-center py-2
                 bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white
-                rounded-lg transition-colors
-                ${collapsed ? 'w-full px-2' : 'px-2.5'}
+                rounded-lg transition-colors min-h-[40px]
+                ${collapsed ? 'w-full px-2' : 'px-3'}
               `}
               title="Logout"
             >

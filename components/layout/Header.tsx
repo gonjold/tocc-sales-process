@@ -40,7 +40,7 @@ export function Header() {
   const pathname = usePathname()
   
   const getPageTitle = () => {
-    return pageTitles[pathname] || 'Training Portal'
+    return pageTitles[pathname] || 'Sales Process Portal'
   }
 
   const getBreadcrumbs = () => {
@@ -99,11 +99,11 @@ export function Header() {
   const breadcrumbs = getBreadcrumbs()
 
   return (
-    <header className="sticky top-0 z-30 bg-white border-b border-gray-200 px-4 lg:px-8 h-16 flex items-center justify-between">
-      <div className="flex items-center gap-3">
+    <header className="sticky top-0 z-30 bg-white border-b border-gray-200 px-3 sm:px-4 lg:px-8 h-14 lg:h-16 flex items-center justify-between">
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
         {/* Mobile Menu Button */}
         <button 
-          className="lg:hidden p-2 -ml-2 hover:bg-gray-100 rounded-lg transition-colors"
+          className="lg:hidden p-2 -ml-1 hover:bg-gray-100 rounded-lg transition-colors flex-shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
           onClick={handleMenuClick}
           aria-label="Open menu"
         >
@@ -111,23 +111,23 @@ export function Header() {
         </button>
         
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gray-700 transition-colors">
+        <nav className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-500 min-w-0 overflow-hidden">
+          <Link href="/" className="hover:text-gray-700 transition-colors flex-shrink-0 p-1">
             <Home size={16} />
           </Link>
           {breadcrumbs.map((crumb, idx) => (
-            <span key={idx} className="flex items-center gap-2">
-              <ChevronRight size={14} className="text-gray-300" />
+            <span key={idx} className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+              <ChevronRight size={14} className="text-gray-300 flex-shrink-0" />
               {crumb.href && idx < breadcrumbs.length - 1 ? (
-                <Link href={crumb.href} className="hover:text-gray-900 transition-colors">
+                <Link href={crumb.href} className="hover:text-gray-900 transition-colors truncate">
                   {crumb.name}
                 </Link>
               ) : (
-                <span className="text-gray-900 font-medium">{crumb.name}</span>
+                <span className="text-gray-900 font-medium truncate">{crumb.name}</span>
               )}
             </span>
           ))}
-        </div>
+        </nav>
       </div>
     </header>
   )

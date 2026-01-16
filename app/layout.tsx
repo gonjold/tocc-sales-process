@@ -5,8 +5,8 @@ import { ClientLayout } from '@/components/ClientLayout'
 const ICON_URL = 'https://firebasestorage.googleapis.com/v0/b/ahtocc-sales-training.firebasestorage.app/o/images%2Flogos%2FTOCC%20Palm%20BUG%20-%20color.png?alt=media'
 
 export const metadata: Metadata = {
-  title: 'Sales Training | Toyota of Coconut Creek',
-  description: 'Comprehensive sales training system for automotive professionals',
+  title: 'Sales Process Portal | Toyota of Coconut Creek',
+  description: 'Comprehensive sales process portal for automotive professionals at Toyota of Coconut Creek',
   manifest: '/manifest.json',
   icons: {
     icon: ICON_URL,
@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'TOCC Train',
+    title: 'TOCC Sales',
   },
-  applicationName: 'TOCC Sales Training',
+  applicationName: 'TOCC Sales Process Portal',
   formatDetection: {
     telephone: false,
   },
@@ -28,8 +28,9 @@ export const viewport: Viewport = {
   themeColor: '#EB0A1E',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
@@ -44,7 +45,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="TOCC Train" />
+        <meta name="apple-mobile-web-app-title" content="TOCC Sales" />
         
         {/* Apple Touch Icons */}
         <link rel="apple-touch-icon" href={ICON_URL} />
